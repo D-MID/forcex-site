@@ -8,6 +8,7 @@ import { TextReveal } from '@/components/animations/TextReveal'
 import { ServiceModal } from '@/components/sections/ServiceModal'
 import { serviceData } from '@/lib/serviceData'
 import type { ServiceDetail } from '@/components/sections/ServiceModal'
+import { IconGrid } from '@/components/animations/IconGrid'
 import Link from 'next/link'
 
 export function ServicesGrid() {
@@ -17,7 +18,8 @@ export function ServicesGrid() {
     <>
       <ServiceModal service={selected} onClose={() => setSelected(null)} />
 
-      <section className="section" style={{ backgroundColor: '#08080A' }}>
+      <section className="section relative overflow-hidden" style={{ backgroundColor: '#08080A' }}>
+        <IconGrid opacity={0.03} />
         <div className="max-w-7xl mx-auto px-6">
 
           {/* Header */}
@@ -49,12 +51,26 @@ export function ServicesGrid() {
                   style={{ backgroundColor: '#0D0D10', border: '1px solid #1C1C22' }}
                   intensity={6}
                 >
-                  <div
-                    className="w-12 h-12 flex items-center justify-center rounded transition-colors duration-300"
+                  <motion.div
+                    className="w-12 h-12 flex items-center justify-center rounded relative"
                     style={{ color: '#DC2626', backgroundColor: 'rgba(220,38,38,0.08)', borderRadius: '8px' }}
+                    whileHover={{
+                      scale: 1.1,
+                      backgroundColor: 'rgba(220,38,38,0.16)',
+                      filter: 'drop-shadow(0 0 8px rgba(220,38,38,0.5))',
+                    }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 15 }}
                   >
                     {service.icon}
-                  </div>
+                    {/* Pulse ring on hover */}
+                    <motion.div
+                      className="absolute inset-0 rounded"
+                      style={{ border: '1px solid rgba(220,38,38,0.4)', borderRadius: '8px' }}
+                      initial={{ scale: 1, opacity: 0 }}
+                      whileHover={{ scale: 1.6, opacity: [0, 0.6, 0] }}
+                      transition={{ duration: 0.6, ease: 'easeOut' }}
+                    />
+                  </motion.div>
                   <h3 className="text-base font-bold text-white leading-tight">
                     {service.title}
                   </h3>

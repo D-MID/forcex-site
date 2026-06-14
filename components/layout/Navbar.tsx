@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
   { label: 'Services', href: '/services' },
+  { label: 'Loxone', href: '/loxone', highlight: true },
+  { label: 'UniFi', href: '/unifi', highlight: true },
   { label: 'Industries', href: '/industries' },
   { label: 'Projects', href: '/projects' },
   { label: 'About', href: '/about' },
@@ -60,16 +62,30 @@ export function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium transition-colors duration-200"
-                style={{ color: pathname === link.href ? '#DC2626' : '#A1A1AA' }}
-                onMouseEnter={(e) => { if (pathname !== link.href) (e.target as HTMLElement).style.color = '#ffffff' }}
-                onMouseLeave={(e) => { if (pathname !== link.href) (e.target as HTMLElement).style.color = '#A1A1AA' }}
-              >
-                {link.label}
-              </Link>
+              link.highlight ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-bold transition-colors duration-200 flex items-center gap-1.5"
+                  style={{ color: pathname === link.href ? '#ffffff' : '#DC2626' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#DC2626' }}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+                  {link.label}
+                </Link>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium transition-colors duration-200"
+                  style={{ color: pathname === link.href ? '#DC2626' : '#A1A1AA' }}
+                  onMouseEnter={(e) => { if (pathname !== link.href) (e.target as HTMLElement).style.color = '#ffffff' }}
+                  onMouseLeave={(e) => { if (pathname !== link.href) (e.target as HTMLElement).style.color = '#A1A1AA' }}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </nav>
 

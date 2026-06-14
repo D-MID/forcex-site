@@ -4,6 +4,8 @@ import { Hero } from '@/components/sections/Hero'
 import { TrustBar } from '@/components/sections/TrustBar'
 import { ServicesGrid } from '@/components/sections/ServicesGrid'
 import { MarqueeTicker } from '@/components/sections/MarqueeTicker'
+import { LoxoneSection } from '@/components/sections/LoxoneSection'
+import { UnifiSection } from '@/components/sections/UnifiSection'
 import { IndustriesGrid } from '@/components/sections/IndustriesGrid'
 import { FeaturedProjects } from '@/components/sections/FeaturedProjects'
 import { WhyForceX } from '@/components/sections/WhyForceX'
@@ -23,6 +25,8 @@ export default function HomePage() {
         <ServicesGrid />
         <IndustriesGrid />
         <MarqueeTicker />
+        <LoxoneSection />
+        <UnifiSection />
         <FeaturedProjects />
         <WhyForceX />
         <SupportPlans />

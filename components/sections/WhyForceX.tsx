@@ -1,83 +1,131 @@
 'use client'
 
+import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { FadeUp } from '@/components/animations/FadeUp'
-import { TextReveal } from '@/components/animations/TextReveal'
 
 const pillars = [
   {
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-    ),
+    number: '01',
     title: 'One Company. Everything Tech.',
     description: 'Stop juggling multiple vendors. ForceX handles IT, networking, security, cabling, and smart systems — all under one roof, one relationship, one call.',
+    detail: 'Coordinating between multiple technology vendors wastes time and creates gaps. When your network affects your cameras, which affects your access control — you need one team that understands all of it.',
+    iconPath: 'M22 11.08V12a10 10 0 11-5.93-9.14M22 4L12 14.01l-3-3',
   },
   {
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-      </svg>
-    ),
+    number: '02',
     title: 'Fast Response. Every Time.',
     description: 'When technology fails, every minute counts. Our team responds in under 2 hours — because your business cannot afford downtime.',
+    detail: 'Most IT issues are resolved remotely within the hour. For on-site issues, we dispatch same-day. Managed IT clients get 24/7 monitoring so we often catch problems before you notice them.',
+    iconPath: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z',
   },
   {
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-      </svg>
-    ),
+    number: '03',
     title: 'Enterprise-Grade. Every Project.',
-    description: 'We use professional-grade equipment and proven standards on every project — from a single camera install to a full network deployment.',
+    description: 'We use professional hardware and proven installation standards on every job — from a single camera to a full network deployment.',
+    detail: 'We don\'t use consumer gear from big-box stores. Every install uses commercial-grade hardware with proper cabling, documentation, and configuration that will still be running clean in 10 years.',
+    iconPath: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
   },
   {
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-      </svg>
-    ),
-    title: 'Local. Accountable. California-Based.',
-    description: 'We\'re not a remote helpdesk or national franchise. We\'re your local Sacramento-area technology partner — on-site when you need us.',
+    number: '04',
+    title: 'Local. Accountable. On-Site.',
+    description: 'We\'re not a remote helpdesk or national franchise. We\'re your Sacramento-area technology partner — physically here when you need us.',
+    detail: 'Our team lives and works in the Sacramento region. We know the area, we show up in person, and you can always reach a real person — not a ticket system.',
+    iconPath: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z',
   },
 ]
 
 export function WhyForceX() {
   return (
-    <section className="section" style={{ backgroundColor: '#08080A' }}>
+    <section className="section" style={{ backgroundColor: '#08080A', borderTop: '1px solid #1C1C22' }}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
-        <FadeUp className="mb-16 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>
-            Why ForceX
-          </p>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            <TextReveal text="The ForceX Difference" />
-          </h2>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: '#A1A1AA' }}>
-            Dozens of IT companies compete for your business. Here&apos;s why clients choose ForceX — and stay.
-          </p>
-        </FadeUp>
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14">
+          <FadeUp>
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>
+              Why ForceX
+            </p>
+            <h2 className="text-4xl md:text-5xl font-black text-white">
+              The ForceX Difference
+            </h2>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <Link
+              href="/about"
+              className="text-sm font-bold transition-colors duration-200 flex-shrink-0"
+              style={{ color: '#DC2626' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#DC2626' }}
+            >
+              Learn More About Us →
+            </Link>
+          </FadeUp>
+        </div>
 
         {/* Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ backgroundColor: '#1C1C22' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {pillars.map((pillar, i) => (
-            <FadeUp key={pillar.title} delay={i * 0.1}>
-              <div
-                className="p-10 flex flex-col gap-5 h-full"
-                style={{ backgroundColor: '#0D0D10' }}
-              >
-                <div style={{ color: '#DC2626' }}>{pillar.icon}</div>
-                <h3 className="text-xl font-bold text-white">{pillar.title}</h3>
-                <p className="text-base leading-relaxed" style={{ color: '#71717A' }}>
-                  {pillar.description}
-                </p>
+            <motion.div
+              key={pillar.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
+              className="p-8 rounded-lg group"
+              style={{ backgroundColor: '#0D0D10', border: '1px solid #1C1C22' }}
+              whileHover={{ borderColor: 'rgba(220,38,38,0.2)' }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs font-black" style={{ color: 'rgba(220,38,38,0.4)', fontFamily: 'monospace' }}>
+                  {pillar.number}
+                </span>
+                <motion.div
+                  className="w-8 h-8 flex items-center justify-center rounded"
+                  style={{ color: '#DC2626', backgroundColor: 'rgba(220,38,38,0.08)', borderRadius: '6px' }}
+                  whileHover={{ scale: 1.15, filter: 'drop-shadow(0 0 6px rgba(220,38,38,0.5))' }}
+                  animate={{ rotate: [0, 0, 0] }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <path d={pillar.iconPath} />
+                  </svg>
+                </motion.div>
               </div>
-            </FadeUp>
+              <h3 className="text-lg font-bold text-white mb-3">{pillar.title}</h3>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: '#A1A1AA' }}>
+                {pillar.description}
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: '#52525B' }}>
+                {pillar.detail}
+              </p>
+            </motion.div>
           ))}
         </div>
+
+        {/* Bottom CTA */}
+        <FadeUp delay={0.2} className="mt-8">
+          <div
+            className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-7 rounded-lg"
+            style={{ backgroundColor: '#0D0D10', border: '1px solid #1C1C22' }}
+          >
+            <div>
+              <p className="text-base font-bold text-white mb-1">Not sure what you need?</p>
+              <p className="text-sm" style={{ color: '#71717A' }}>
+                Tell us about your situation and we'll tell you exactly what makes sense — and what doesn't.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="flex-shrink-0 px-6 py-3 text-sm font-bold text-white rounded transition-all duration-200"
+              style={{ backgroundColor: '#DC2626' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#B91C1C' }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#DC2626' }}
+            >
+              Talk to ForceX →
+            </Link>
+          </div>
+        </FadeUp>
       </div>
     </section>
   )

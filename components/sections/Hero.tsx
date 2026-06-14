@@ -6,6 +6,8 @@ import { useRef } from 'react'
 import { AnimatedCounter } from '@/components/animations/AnimatedCounter'
 import { MagneticButton } from '@/components/animations/MagneticButton'
 import { MorphingWord } from '@/components/animations/MorphingWord'
+import { FloatingIcons } from '@/components/animations/FloatingIcons'
+import { RingIcon } from '@/components/animations/DrawIcon'
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
@@ -21,6 +23,9 @@ export function Hero() {
     >
       {/* Animated grid */}
       <div className="absolute inset-0 grid-bg pointer-events-none" />
+
+      {/* Floating tech icons */}
+      <FloatingIcons />
 
       {/* Diagonal accent lines */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -222,20 +227,27 @@ export function Hero() {
           style={{ border: '1px solid #1C1C22', backgroundColor: '#1C1C22' }}
         >
           {[
-            { value: 500, suffix: '+', label: 'Projects Completed' },
-            { value: 200, suffix: '+', label: 'Clients Served' },
-            { raw: '<2hr', label: 'Response Time' },
-            { value: 10, suffix: '+', label: 'Years Experience' },
+            { value: 500, suffix: '+', label: 'Projects Completed', icon: <path d="M22 11.08V12a10 10 0 11-5.93-9.14M22 4L12 14.01l-3-3"/> },
+            { value: 200, suffix: '+', label: 'Clients Served', icon: <><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></> },
+            { raw: '<2hr', label: 'Response Time', icon: <><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></> },
+            { value: 10, suffix: '+', label: 'Years Experience', icon: <><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></> },
           ].map((stat) => (
-            <div
+            <motion.div
               key={stat.label}
-              className="flex flex-col items-center justify-center py-5 px-4"
+              className="flex flex-col items-center justify-center py-5 px-4 group"
               style={{ backgroundColor: '#0D0D10' }}
+              whileHover={{ backgroundColor: '#121215' }}
             >
-              <span
-                className="text-2xl md:text-3xl font-black mb-1"
-                style={{ color: '#DC2626', fontFamily: 'monospace' }}
+              <motion.div
+                className="mb-2 opacity-40 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ color: '#DC2626' }}
+                whileHover={{ scale: 1.2, rotate: 5 }}
               >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  {stat.icon}
+                </svg>
+              </motion.div>
+              <span className="text-2xl md:text-3xl font-black mb-1" style={{ color: '#DC2626', fontFamily: 'monospace' }}>
                 {'raw' in stat ? stat.raw : (
                   <AnimatedCounter value={stat.value!} suffix={stat.suffix} />
                 )}
@@ -243,7 +255,7 @@ export function Hero() {
               <span className="text-xs text-center" style={{ color: '#71717A' }}>
                 {stat.label}
               </span>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </motion.div>
@@ -262,12 +274,30 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         style={{ color: '#52525B' }}
       >
-        <span className="text-xs uppercase tracking-widest">Scroll</span>
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.6 }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M12 5v14M5 12l7 7 7-7"/>
-          </svg>
-        </motion.div>
+        <span className="text-xs uppercase tracking-widest" style={{ letterSpacing: '0.2em' }}>Scroll</span>
+        {/* Animated scroll track */}
+        <div className="relative flex flex-col items-center">
+          <div
+            className="w-px h-10 relative overflow-hidden"
+            style={{ background: 'linear-gradient(to bottom, transparent, rgba(220,38,38,0.15))' }}
+          >
+            <motion.div
+              className="absolute top-0 left-0 w-full"
+              style={{ background: 'linear-gradient(to bottom, transparent, #DC2626, transparent)', height: '40%' }}
+              animate={{ y: ['-100%', '300%'] }}
+              transition={{ repeat: Infinity, duration: 1.4, ease: 'easeIn' }}
+            />
+          </div>
+          <motion.div
+            animate={{ y: [0, 5, 0], opacity: [0.4, 1, 0.4] }}
+            transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+            style={{ color: '#DC2626' }}
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   )
