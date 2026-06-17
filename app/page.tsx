@@ -3,13 +3,11 @@ import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
 import { TrustBar } from '@/components/sections/TrustBar'
 import { ServicesGrid } from '@/components/sections/ServicesGrid'
-import { MarqueeTicker } from '@/components/sections/MarqueeTicker'
+import { HowItWorks } from '@/components/sections/HowItWorks'
 import { LoxoneSection } from '@/components/sections/LoxoneSection'
 import { UnifiSection } from '@/components/sections/UnifiSection'
 import { IndustriesGrid } from '@/components/sections/IndustriesGrid'
-import { FeaturedProjects } from '@/components/sections/FeaturedProjects'
 import { WhyForceX } from '@/components/sections/WhyForceX'
-import { SupportPlans } from '@/components/sections/SupportPlans'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { FinalCTA } from '@/components/sections/FinalCTA'
 import { ContactForm } from '@/components/sections/ContactForm'
@@ -21,15 +19,12 @@ export default function HomePage() {
       <main>
         <Hero />
         <TrustBar />
-        <MarqueeTicker />
         <ServicesGrid />
-        <IndustriesGrid />
-        <MarqueeTicker />
+        <HowItWorks />
         <LoxoneSection />
         <UnifiSection />
-        <FeaturedProjects />
+        <IndustriesGrid />
         <WhyForceX />
-        <SupportPlans />
         <Testimonials />
         <FinalCTA />
         <ContactForm />

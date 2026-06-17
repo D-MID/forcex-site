@@ -1,13 +1,13 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 
 const stats = [
-  { value: '500+', label: 'Projects completed', sub: 'Homes & businesses' },
-  { value: '<2hr', label: 'Response time', sub: 'Business hours guaranteed' },
-  { value: '10+', label: 'Years in business', sub: 'Sacramento area' },
-  { value: '200+', label: 'Active clients', sub: 'Ongoing relationships' },
+  { value: '500+', label: 'Projects completed' },
+  { value: '<2hr', label: 'Response time' },
+  { value: '200+', label: 'Active clients' },
+  { value: '10+', label: 'Years in business' },
 ]
 
 const badges = [
@@ -15,74 +15,63 @@ const badges = [
   'Loxone Certified Partner',
   'Ubiquiti Professional Installer',
   'Low Voltage Contractor',
-  'Sacramento, CA Based',
+  'Sacramento, CA',
 ]
 
 export function TrustBar() {
-  return (
-    <section style={{ backgroundColor: 'var(--bg-2)', borderTop: '1px solid #1C1C22', borderBottom: '1px solid #1C1C22' }}>
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true })
 
-      {/* Stats row */}
-      <div className="max-w-7xl mx-auto px-6 py-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ backgroundColor: 'var(--bg-4)' }}>
+  return (
+    <section
+      ref={ref}
+      style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', backgroundColor: 'var(--bg-2)' }}
+    >
+      {/* Stats */}
+      <div className="max-w-5xl mx-auto px-6 py-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x" style={{ '--tw-divide-opacity': 1 } as React.CSSProperties}>
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="flex flex-col items-center justify-center py-6 px-4 text-center"
-              style={{ backgroundColor: 'var(--bg-2)' }}
+              className="flex flex-col items-center text-center md:px-8"
             >
-              <span className="text-2xl md:text-3xl font-black mb-1" style={{ color: '#0EA5E9', fontFamily: 'monospace' }}>
+              <span
+                className="text-3xl md:text-4xl font-black mb-1 tabular-nums"
+                style={{ color: '#0EA5E9', fontFamily: 'Inter, monospace', letterSpacing: '-0.02em' }}
+              >
                 {s.value}
               </span>
-              <span className="text-sm font-bold text-white">{s.label}</span>
-              <span className="text-xs mt-0.5" style={{ color: 'var(--text-4)' }}>{s.sub}</span>
+              <span className="text-sm font-medium" style={{ color: 'var(--text-3)' }}>
+                {s.label}
+              </span>
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* Badge strip */}
-      <div style={{ borderTop: '1px solid #1C1C22', backgroundColor: 'var(--bg)' }}>
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex flex-wrap items-center justify-center gap-3">
+      <div style={{ borderTop: '1px solid var(--border)' }}>
+        <div className="max-w-5xl mx-auto px-6 py-3">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             {badges.map((b, i) => (
               <motion.span
                 key={b}
                 initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-medium"
-                style={{ border: '1px solid #1C1C22', color: 'var(--text-3)', backgroundColor: 'var(--bg-2)' }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.4, delay: 0.3 + i * 0.05 }}
+                className="flex items-center gap-1.5 text-xs font-medium"
+                style={{ color: 'var(--text-4)' }}
               >
-                <span style={{ color: '#0EA5E9' }}>✓</span>
+                <span style={{ color: '#0EA5E9', fontSize: '10px' }}>✓</span>
                 {b}
               </motion.span>
             ))}
-            <motion.span
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.35 }}
-            >
-              <Link
-                href="/about"
-                className="text-xs font-bold transition-colors duration-200"
-                style={{ color: '#0EA5E9' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#0EA5E9' }}
-              >
-                About Us →
-              </Link>
-            </motion.span>
           </div>
         </div>
       </div>
-
     </section>
   )
 }

@@ -1,117 +1,176 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { FadeUp } from '@/components/animations/FadeUp'
-import { TiltCard } from '@/components/animations/TiltCard'
-import { TextReveal } from '@/components/animations/TextReveal'
+import { useState, useRef } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { ServiceModal } from '@/components/sections/ServiceModal'
 import { serviceData } from '@/lib/serviceData'
 import type { ServiceDetail } from '@/components/sections/ServiceModal'
-import { IconGrid } from '@/components/animations/IconGrid'
 import Link from 'next/link'
+
+function ServiceRow({ service, index, onOpen }: { service: ServiceDetail; index: number; onOpen: () => void }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+  const [hovered, setHovered] = useState(false)
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.55, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+    >
+      <button
+        onClick={onOpen}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="w-full text-left"
+        aria-label={`Learn more about ${service.title}`}
+      >
+        <div
+          className="flex items-start md:items-center gap-6 md:gap-10 py-7 transition-all duration-200"
+          style={{ borderBottom: '1px solid var(--border)' }}
+        >
+          {/* Number */}
+          <span
+            className="text-xs font-black tabular-nums flex-shrink-0 transition-colors duration-300 mt-1 md:mt-0"
+            style={{
+              color: hovered ? '#0EA5E9' : 'var(--text-4)',
+              fontFamily: 'Inter, monospace',
+              letterSpacing: '0.05em',
+              minWidth: '28px',
+            }}
+          >
+            {String(index + 1).padStart(2, '0')}
+          </span>
+
+          {/* Icon */}
+          <motion.div
+            animate={{ color: hovered ? '#0EA5E9' : 'var(--text-4)' }}
+            transition={{ duration: 0.2 }}
+            className="flex-shrink-0 hidden md:block"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
+              {service.icon}
+            </svg>
+          </motion.div>
+
+          {/* Content */}
+          <div className="flex-1 min-w-0">
+            <motion.h3
+              animate={{ color: hovered ? '#F0F6FC' : 'var(--text-1)' }}
+              transition={{ duration: 0.2 }}
+              className="text-lg md:text-xl font-bold leading-tight mb-1"
+            >
+              {service.title}
+            </motion.h3>
+            <AnimatePresence>
+              {hovered && (
+                <motion.p
+                  initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                  animate={{ opacity: 1, height: 'auto', marginTop: 4 }}
+                  exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                  transition={{ duration: 0.22, ease: 'easeOut' }}
+                  className="text-sm leading-relaxed overflow-hidden"
+                  style={{ color: 'var(--text-2)' }}
+                >
+                  {service.description.slice(0, 110)}…
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Arrow */}
+          <motion.div
+            animate={{ x: hovered ? 5 : 0, color: hovered ? '#0EA5E9' : 'var(--text-4)' }}
+            transition={{ duration: 0.2 }}
+            className="flex-shrink-0"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </motion.div>
+        </div>
+      </button>
+    </motion.div>
+  )
+}
 
 export function ServicesGrid() {
   const [selected, setSelected] = useState<ServiceDetail | null>(null)
+  const headerRef = useRef(null)
+  const headerInView = useInView(headerRef, { once: true })
 
   return (
     <>
       <ServiceModal service={selected} onClose={() => setSelected(null)} />
 
-      <section className="section relative overflow-hidden" style={{ backgroundColor: 'var(--bg)' }}>
-        <IconGrid opacity={0.03} />
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="section" style={{ backgroundColor: 'var(--bg)' }} id="services">
+        <div className="max-w-5xl mx-auto px-6">
 
           {/* Header */}
-          <FadeUp className="mb-16 text-center">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>
-              What We Do
-            </p>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-              <TextReveal text="Complete Technology Solutions" />
-            </h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-2)' }}>
-              From the cable in the wall to the cloud above it — ForceX handles every layer of your technology infrastructure.
-            </p>
-          </FadeUp>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {serviceData.map((service, i) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.05, ease: 'easeOut' }}
+          <div ref={headerRef} className="mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+            <div>
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={headerInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5 }}
+                className="section-label"
               >
-                <TiltCard
-                  onClick={() => setSelected(service)}
-                  className="group p-8 flex flex-col gap-4 transition-all duration-300 cursor-pointer h-full card-hover relative"
-                  style={{ backgroundColor: 'var(--bg-2)', border: '1px solid #1C1C22' }}
-                  intensity={6}
+                What We Do
+              </motion.span>
+              <div className="overflow-hidden">
+                <motion.h2
+                  initial={{ y: '100%' }}
+                  animate={headerInView ? { y: '0%' } : {}}
+                  transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+                  className="text-4xl md:text-5xl font-black"
+                  style={{ color: 'var(--text-1)', letterSpacing: '-0.03em' }}
                 >
-                  <motion.div
-                    className="w-12 h-12 flex items-center justify-center rounded relative"
-                    style={{ color: '#0EA5E9', backgroundColor: 'rgba(14,165,233,0.08)', borderRadius: '8px' }}
-                    whileHover={{
-                      scale: 1.1,
-                      backgroundColor: 'rgba(14,165,233,0.16)',
-                      filter: 'drop-shadow(0 0 8px rgba(14,165,233,0.5))',
-                    }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                  >
-                    {service.icon}
-                    {/* Pulse ring on hover */}
-                    <motion.div
-                      className="absolute inset-0 rounded"
-                      style={{ border: '1px solid rgba(14,165,233,0.4)', borderRadius: '8px' }}
-                      initial={{ scale: 1, opacity: 0 }}
-                      whileHover={{ scale: 1.6, opacity: [0, 0.6, 0] }}
-                      transition={{ duration: 0.6, ease: 'easeOut' }}
-                    />
-                  </motion.div>
-                  <h3 className="text-base font-bold text-white leading-tight">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-3)' }}>
-                    {service.description.slice(0, 90)}…
-                  </p>
-                  <div
-                    className="mt-auto text-xs font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center gap-2"
-                    style={{ color: '#0EA5E9' }}
-                  >
-                    <span>Learn More</span>
-                    <motion.span
-                      animate={{ x: [0, 4, 0] }}
-                      transition={{ repeat: Infinity, duration: 1.4, ease: 'easeInOut' }}
-                    >
-                      →
-                    </motion.span>
-                  </div>
-                </TiltCard>
-              </motion.div>
+                  Complete Technology Solutions
+                </motion.h2>
+              </div>
+            </div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={headerInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="text-sm max-w-xs md:text-right hidden md:block"
+              style={{ color: 'var(--text-3)', lineHeight: 1.7 }}
+            >
+              From the cable in the wall to the cloud above it — ForceX handles every layer of your infrastructure.
+            </motion.p>
+          </div>
+
+          {/* Top rule */}
+          <div style={{ borderTop: '1px solid var(--border)' }} />
+
+          {/* Service list */}
+          <div>
+            {serviceData.map((service, i) => (
+              <ServiceRow
+                key={service.title}
+                service={service}
+                index={i}
+                onOpen={() => setSelected(service)}
+              />
             ))}
           </div>
 
-          {/* CTA */}
-          <FadeUp delay={0.2} className="mt-12 text-center">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-white rounded transition-all duration-200"
-              style={{ border: '1px solid #26262E', backgroundColor: 'transparent' }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = '#0EA5E9'
-                ;(e.currentTarget as HTMLElement).style.color = '#0EA5E9'
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-2)'
-                ;(e.currentTarget as HTMLElement).style.color = '#ffffff'
-              }}
-            >
-              View All Services →
+          {/* Footer */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+          >
+            <p className="text-sm" style={{ color: 'var(--text-3)' }}>
+              Not sure what you need? We'll figure it out together.
+            </p>
+            <Link href="/contact" className="btn-primary" style={{ fontSize: '14px', padding: '10px 24px' }}>
+              Request a Site Assessment
             </Link>
-          </FadeUp>
+          </motion.div>
         </div>
       </section>
     </>

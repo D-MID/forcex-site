@@ -103,8 +103,8 @@ p { line-height: 1.75; color: var(--text-2); }
 }
 
 /* ── Section base ─────────────────────────────────────────── */
-.section { padding: 8rem 0; }
-@media (max-width: 768px) { .section { padding: 5rem 0; } }
+.section { padding: 9rem 0; }
+@media (max-width: 768px) { .section { padding: 6rem 0; } }
 
 /* ── Glow effects ─────────────────────────────────────────── */
 .glow-blue { box-shadow: 0 0 40px var(--blue-glow), 0 0 80px rgba(14,165,233,0.05); }

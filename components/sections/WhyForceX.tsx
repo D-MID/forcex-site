@@ -1,131 +1,186 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
-import { FadeUp } from '@/components/animations/FadeUp'
 
-const pillars = [
+const statements = [
   {
     number: '01',
-    title: 'One Company. Everything Tech.',
-    description: 'Stop juggling multiple vendors. ForceX handles IT, networking, security, cabling, and smart systems — all under one roof, one relationship, one call.',
-    detail: 'Coordinating between multiple technology vendors wastes time and creates gaps. When your network affects your cameras, which affects your access control — you need one team that understands all of it.',
-    iconPath: 'M22 11.08V12a10 10 0 11-5.93-9.14M22 4L12 14.01l-3-3',
+    headline: 'One company. Everything tech.',
+    body: 'Stop managing five vendors. ForceX handles IT, networking, security cameras, access control, cabling, and smart automation — all under one relationship, one call.',
+    stat: '8 service types',
+    statLabel: 'fully in-house',
   },
   {
     number: '02',
-    title: 'Fast Response. Every Time.',
-    description: 'When technology fails, every minute counts. Our team responds in under 2 hours — because your business cannot afford downtime.',
-    detail: 'Most IT issues are resolved remotely within the hour. For on-site issues, we dispatch same-day. Managed IT clients get 24/7 monitoring so we often catch problems before you notice them.',
-    iconPath: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z',
+    headline: 'Under 2 hours. Every time.',
+    body: "When technology fails, your business stops. We respond faster than anyone in Sacramento — and with managed IT, we often catch issues before you do.",
+    stat: '<2hr',
+    statLabel: 'guaranteed response',
   },
   {
     number: '03',
-    title: 'Enterprise-Grade. Every Project.',
-    description: 'We use professional hardware and proven installation standards on every job — from a single camera to a full network deployment.',
-    detail: 'We don\'t use consumer gear from big-box stores. Every install uses commercial-grade hardware with proper cabling, documentation, and configuration that will still be running clean in 10 years.',
-    iconPath: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
+    headline: 'Enterprise-grade on every job.',
+    body: "We don't use consumer gear from big-box stores. Every install uses commercial hardware, proper cabling, and clean documentation built to last a decade.",
+    stat: '500+',
+    statLabel: 'installs completed',
   },
   {
     number: '04',
-    title: 'Local. Accountable. On-Site.',
-    description: 'We\'re not a remote helpdesk or national franchise. We\'re your Sacramento-area technology partner — physically here when you need us.',
-    detail: 'Our team lives and works in the Sacramento region. We know the area, we show up in person, and you can always reach a real person — not a ticket system.',
-    iconPath: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z',
+    headline: 'Sacramento. Here in person.',
+    body: "We're not a remote helpdesk. We're your local technology partner — physically here, accountable, with a team that shows up and stands behind the work.",
+    stat: '10+',
+    statLabel: 'years in business',
   },
 ]
 
-export function WhyForceX() {
+function StatementRow({ item, index }: { item: typeof statements[0]; index: number }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
   return (
-    <section className="section" style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid #1C1C22' }}>
-      <div className="max-w-7xl mx-auto px-6">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0 }}
+      animate={inView ? { opacity: 1 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 md:py-12"
+      style={{ borderBottom: '1px solid var(--border)' }}
+    >
+      {/* Number */}
+      <div className="md:col-span-1 flex md:block items-center gap-3">
+        <span
+          className="text-xs font-black"
+          style={{ color: 'var(--text-4)', fontFamily: 'Inter, monospace', letterSpacing: '0.05em' }}
+        >
+          {item.number}
+        </span>
+      </div>
+
+      {/* Headline */}
+      <div className="md:col-span-5">
+        <div className="overflow-hidden">
+          <motion.h3
+            initial={{ y: '100%' }}
+            animate={inView ? { y: '0%' } : {}}
+            transition={{ duration: 0.65, delay: index * 0.08 + 0.05, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+            className="text-2xl md:text-3xl font-black leading-tight"
+            style={{ color: 'var(--text-1)', letterSpacing: '-0.025em' }}
+          >
+            {item.headline}
+          </motion.h3>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="md:col-span-4">
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, delay: index * 0.08 + 0.15, ease: 'easeOut' }}
+          className="text-sm leading-relaxed"
+          style={{ color: 'var(--text-2)' }}
+        >
+          {item.body}
+        </motion.p>
+      </div>
+
+      {/* Stat */}
+      <div className="md:col-span-2 flex md:flex-col items-center md:items-end justify-start md:justify-start gap-2 md:gap-0">
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: index * 0.08 + 0.2 }}
+          className="text-2xl font-black tabular-nums"
+          style={{ color: '#0EA5E9', fontFamily: 'Inter, monospace', letterSpacing: '-0.02em' }}
+        >
+          {item.stat}
+        </motion.span>
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: index * 0.08 + 0.28 }}
+          className="text-xs"
+          style={{ color: 'var(--text-4)' }}
+        >
+          {item.statLabel}
+        </motion.span>
+      </div>
+    </motion.div>
+  )
+}
+
+export function WhyForceX() {
+  const headerRef = useRef(null)
+  const headerInView = useInView(headerRef, { once: true })
+
+  return (
+    <section className="section" style={{ backgroundColor: 'var(--bg-2)', borderTop: '1px solid var(--border)' }}>
+      <div className="max-w-5xl mx-auto px-6">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14">
-          <FadeUp>
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>
+        <div ref={headerRef} className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={headerInView ? { opacity: 1 } : {}}
+              className="section-label"
+            >
               Why ForceX
-            </p>
-            <h2 className="text-4xl md:text-5xl font-black text-white">
-              The ForceX Difference
-            </h2>
-          </FadeUp>
-          <FadeUp delay={0.1}>
+            </motion.span>
+            <div className="overflow-hidden">
+              <motion.h2
+                initial={{ y: '100%' }}
+                animate={headerInView ? { y: '0%' } : {}}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+                className="text-4xl md:text-5xl font-black"
+                style={{ color: 'var(--text-1)', letterSpacing: '-0.03em' }}
+              >
+                The ForceX Difference
+              </motion.h2>
+            </div>
+          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={headerInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.2 }}
+          >
             <Link
               href="/about"
-              className="text-sm font-bold transition-colors duration-200 flex-shrink-0"
-              style={{ color: '#0EA5E9' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#0EA5E9' }}
+              className="text-sm font-bold transition-colors duration-200"
+              style={{ color: 'var(--text-3)' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#0EA5E9' }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--text-3)' }}
             >
-              Learn More About Us →
+              About Us →
             </Link>
-          </FadeUp>
+          </motion.div>
         </div>
 
-        {/* Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {pillars.map((pillar, i) => (
-            <motion.div
-              key={pillar.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
-              className="p-8 rounded-lg group"
-              style={{ backgroundColor: 'var(--bg-2)', border: '1px solid #1C1C22' }}
-              whileHover={{ borderColor: 'rgba(14,165,233,0.2)' }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs font-black" style={{ color: 'rgba(14,165,233,0.4)', fontFamily: 'monospace' }}>
-                  {pillar.number}
-                </span>
-                <motion.div
-                  className="w-8 h-8 flex items-center justify-center rounded"
-                  style={{ color: '#0EA5E9', backgroundColor: 'rgba(14,165,233,0.08)', borderRadius: '6px' }}
-                  whileHover={{ scale: 1.15, filter: 'drop-shadow(0 0 6px rgba(14,165,233,0.5))' }}
-                  animate={{ rotate: [0, 0, 0] }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                    <path d={pillar.iconPath} />
-                  </svg>
-                </motion.div>
-              </div>
-              <h3 className="text-lg font-bold text-white mb-3">{pillar.title}</h3>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-2)' }}>
-                {pillar.description}
-              </p>
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-4)' }}>
-                {pillar.detail}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        {/* Top rule */}
+        <div style={{ borderTop: '1px solid var(--border)' }} />
 
-        {/* Bottom CTA */}
-        <FadeUp delay={0.2} className="mt-8">
-          <div
-            className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-7 rounded-lg"
-            style={{ backgroundColor: 'var(--bg-2)', border: '1px solid #1C1C22' }}
-          >
-            <div>
-              <p className="text-base font-bold text-white mb-1">Not sure what you need?</p>
-              <p className="text-sm" style={{ color: 'var(--text-3)' }}>
-                Tell us about your situation and we'll tell you exactly what makes sense — and what doesn't.
-              </p>
-            </div>
-            <Link
-              href="/contact"
-              className="flex-shrink-0 px-6 py-3 text-sm font-bold text-white rounded transition-all duration-200"
-              style={{ backgroundColor: '#0EA5E9' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0284C7' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9' }}
-            >
-              Talk to ForceX →
-            </Link>
-          </div>
-        </FadeUp>
+        {/* Statements */}
+        {statements.map((item, i) => (
+          <StatementRow key={item.number} item={item} index={i} />
+        ))}
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="pt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+        >
+          <p className="text-base font-medium" style={{ color: 'var(--text-2)' }}>
+            Not sure what you need? Tell us about your situation.
+          </p>
+          <Link href="/contact" className="btn-primary" style={{ fontSize: '14px', padding: '10px 24px' }}>
+            Talk to ForceX →
+          </Link>
+        </motion.div>
       </div>
     </section>
   )
