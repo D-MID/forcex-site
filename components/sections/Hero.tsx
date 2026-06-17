@@ -38,17 +38,21 @@ export function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden hero-scan"
       style={{ backgroundColor: 'var(--bg)' }}
     >
-      {/* Hero background image */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: 'url("https://d8j0ntlcm91z4.cloudfront.net/user_3FBTgj49sQUhzXNCbluYS1CyNIy/hf_20260617_231317_85ad2aea-5e91-403f-8952-07724e17cecc.png")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 30%',
-          opacity: 0.18,
-        }}
-      />
-      {/* Image overlay for blending */}
+      {/* Hero background video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        style={{ opacity: 0.22 }}
+      >
+        <source
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_3FBTgj49sQUhzXNCbluYS1CyNIy/hf_20260617_231516_8c0a2c6f-3888-4027-9527-f8e0fc92a694.mp4"
+          type="video/mp4"
+        />
+      </video>
+      {/* Video overlay for blending */}
       <div className="absolute inset-0 hero-img-overlay pointer-events-none" />
 
       {/* Fine grid */}

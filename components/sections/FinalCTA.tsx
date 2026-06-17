@@ -1,64 +1,108 @@
 'use client'
 
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
-import { FadeUp } from '@/components/animations/FadeUp'
-import { motion } from 'framer-motion'
 
 export function FinalCTA() {
-  return (
-    <section
-      className="relative py-32 overflow-hidden"
-      style={{ backgroundColor: 'var(--bg)' }}
-    >
-      {/* Red glow behind */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse at center, rgba(14,165,233,0.12) 0%, transparent 70%)',
-        }}
-      />
-      {/* Grid */}
-      <div className="absolute inset-0 grid-bg opacity-60 pointer-events-none" />
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true })
 
-      <div className="relative max-w-4xl mx-auto px-6 text-center">
-        <FadeUp>
-          <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#0EA5E9' }}>
-            Ready to Get Started?
-          </p>
-        </FadeUp>
-        <FadeUp delay={0.1}>
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-            Your Infrastructure.{' '}
-            <span style={{ color: '#0EA5E9' }}>Our Expertise.</span>
-          </h2>
-        </FadeUp>
-        <FadeUp delay={0.2}>
-          <p className="text-lg mb-10 max-w-2xl mx-auto" style={{ color: 'var(--text-2)' }}>
-            Whether you need a quick fix or a complete technology overhaul, ForceX Tech is ready. Schedule a free consultation and get a clear plan within 24 hours.
-          </p>
-        </FadeUp>
-        <FadeUp delay={0.3}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="px-8 py-4 text-base font-bold text-white rounded transition-all duration-200 glow-red"
-              style={{ backgroundColor: '#0EA5E9', minWidth: '220px', textAlign: 'center' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0284C7' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9' }}
+  return (
+    <section className="section" style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid var(--border)' }}>
+      <div className="max-w-5xl mx-auto px-6">
+
+        <div ref={ref} className="grid grid-cols-12 gap-6">
+          {/* Section number */}
+          <div className="hidden md:block col-span-1">
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.4 }}
+              className="text-xs font-mono tabular-nums"
+              style={{ color: 'var(--text-4)' }}
             >
-              Request a Free Quote
-            </Link>
-            <motion.a
-              href="tel:+19165995514"
-              whileHover={{ borderColor: '#0EA5E9', color: '#0EA5E9', scale: 1.02 }}
-              whileTap={{ scale: 0.97 }}
-              className="px-8 py-4 text-base font-bold text-white rounded"
-              style={{ border: '1px solid #26262E', minWidth: '220px', textAlign: 'center', display: 'block' }}
-            >
-              Call (916) 599-5514
-            </motion.a>
+              10
+            </motion.span>
           </div>
-        </FadeUp>
+
+          {/* Content */}
+          <div className="col-span-12 md:col-span-11">
+
+            {/* Giant editorial headline */}
+            <div className="overflow-hidden">
+              <motion.h2
+                initial={{ y: '100%' }}
+                animate={inView ? { y: '0%' } : {}}
+                transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+                className="font-black leading-none"
+                style={{
+                  fontSize: 'clamp(3.5rem, 10vw, 8rem)',
+                  color: 'var(--text-1)',
+                  letterSpacing: '-0.05em',
+                }}
+              >
+                Let&apos;s Build
+              </motion.h2>
+            </div>
+            <div className="overflow-hidden">
+              <motion.h2
+                initial={{ y: '100%' }}
+                animate={inView ? { y: '0%' } : {}}
+                transition={{ duration: 0.75, delay: 0.08, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+                className="font-black leading-none"
+                style={{
+                  fontSize: 'clamp(3.5rem, 10vw, 8rem)',
+                  color: '#0EA5E9',
+                  letterSpacing: '-0.05em',
+                }}
+              >
+                Something
+              </motion.h2>
+            </div>
+            <div className="overflow-hidden">
+              <motion.h2
+                initial={{ y: '100%' }}
+                animate={inView ? { y: '0%' } : {}}
+                transition={{ duration: 0.75, delay: 0.16, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+                className="font-black leading-none"
+                style={{
+                  fontSize: 'clamp(3.5rem, 10vw, 8rem)',
+                  color: 'var(--text-1)',
+                  letterSpacing: '-0.05em',
+                }}
+              >
+                That Works.
+              </motion.h2>
+            </div>
+
+            {/* Sub row */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.38, ease: 'easeOut' }}
+              className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 mt-14 pt-8"
+              style={{ borderTop: '1px solid var(--border)' }}
+            >
+              <p className="text-sm max-w-sm leading-relaxed" style={{ color: 'var(--text-2)' }}>
+                Schedule a free consultation and get a clear technology plan within 24 hours. No obligation, no fluff — just a straight answer.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+                <Link href="/contact" className="btn-primary">
+                  Request a Free Quote
+                </Link>
+                <a
+                  href="tel:+19165995514"
+                  className="btn-outline"
+                >
+                  Call (916) 599-5514
+                </a>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+
       </div>
     </section>
   )

@@ -1,251 +1,221 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
-import { FadeUp } from '@/components/animations/FadeUp'
-import { IconGrid } from '@/components/animations/IconGrid'
 
 const capabilities = [
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-      </svg>
-    ),
-    title: 'Intelligent Lighting',
-    desc: 'Scenes, schedules, daylight harvesting, and motion-triggered control — automatically, every time.',
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/>
-      </svg>
-    ),
-    title: 'Smart Climate',
-    desc: 'Zone-based HVAC, radiant floor heating, and humidity control that reacts to weather and occupancy.',
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
-      </svg>
-    ),
-    title: 'Access & Security',
-    desc: 'NFC keypads, smart locks, intercom, alarm zones, and door sensors — unified in one platform.',
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
-      </svg>
-    ),
-    title: 'Whole-Home Audio',
-    desc: 'Multi-room audio with zone control, source selection, and streaming — managed from one app.',
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
-      </svg>
-    ),
-    title: 'Energy Management',
-    desc: 'Solar integration, EV charging, automated shutoff in empty rooms — drastically cuts utility bills.',
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-      </svg>
-    ),
-    title: 'Automated Shading',
-    desc: 'Motorized blinds and shades that follow the sun, reduce glare, and maintain perfect temperature.',
-  },
+  { number: '01', title: 'Intelligent Lighting', desc: 'Scenes, schedules, daylight harvesting, and motion-triggered control — automatically, every time.' },
+  { number: '02', title: 'Smart Climate', desc: 'Zone-based HVAC, radiant floor heating, and humidity control that reacts to weather and occupancy.' },
+  { number: '03', title: 'Access & Security', desc: 'NFC keypads, smart locks, intercom, alarm zones, and door sensors — unified in one platform.' },
+  { number: '04', title: 'Whole-Building Audio', desc: 'Multi-room audio with zone control, source selection, and streaming — managed from one app.' },
+  { number: '05', title: 'Energy Management', desc: 'Solar integration, EV charging, automated shutoff in empty rooms — drastically cuts utility bills.' },
+  { number: '06', title: 'Automated Shading', desc: 'Motorized blinds and shades that follow the sun, reduce glare, and maintain perfect temperature.' },
 ]
 
-const whyLoxone = [
-  { label: 'No Monthly Fees', sub: 'You own the hardware. No subscriptions, ever.' },
-  { label: 'No Cloud Dependency', sub: 'Runs locally — works even when internet is down.' },
-  { label: 'Full Admin Access', sub: 'You get the admin credentials. No dealer lock-in.' },
-  { label: '300,000+ Installs', sub: 'Trusted worldwide in homes, hotels, and hospitals.' },
+const facts = [
+  { value: 'No Fees', label: 'No monthly subscriptions, ever' },
+  { value: 'Local', label: 'Runs offline, cloud-independent' },
+  { value: 'Open', label: 'Full admin access, no lock-in' },
+  { value: '300k+', label: 'Installs worldwide' },
 ]
+
+function CapabilityRow({ cap, index }: { cap: typeof capabilities[0]; index: number }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+
+  return (
+    <div
+      ref={ref}
+      className="grid grid-cols-12 gap-4 md:gap-8 py-7 group cursor-default"
+      style={{ borderBottom: '1px solid var(--border)' }}
+    >
+      <div className="col-span-1 flex items-start pt-0.5">
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: index * 0.055 }}
+          className="text-xs font-mono tabular-nums"
+          style={{ color: 'var(--text-4)' }}
+        >
+          {cap.number}
+        </motion.span>
+      </div>
+
+      <div className="col-span-5 md:col-span-4">
+        <div className="overflow-hidden">
+          <motion.h4
+            initial={{ y: '110%' }}
+            animate={inView ? { y: '0%' } : {}}
+            transition={{ duration: 0.6, delay: index * 0.055 + 0.04, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+            className="text-sm md:text-base font-bold"
+            style={{ color: 'var(--text-1)', letterSpacing: '-0.02em' }}
+          >
+            {cap.title}
+          </motion.h4>
+        </div>
+      </div>
+
+      <div className="col-span-5 md:col-span-6">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: index * 0.055 + 0.15 }}
+          className="text-sm leading-relaxed"
+          style={{ color: 'var(--text-3)' }}
+        >
+          {cap.desc}
+        </motion.p>
+      </div>
+
+      <div className="hidden md:flex col-span-1 items-start justify-end pt-0.5">
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: index * 0.055 + 0.18 }}
+          className="text-sm group-hover:translate-x-1 transition-transform duration-300"
+          style={{ color: 'var(--text-4)' }}
+        >
+          →
+        </motion.span>
+      </div>
+    </div>
+  )
+}
 
 export function LoxoneSection() {
+  const headerRef = useRef(null)
+  const headerInView = useInView(headerRef, { once: true })
+  const factsRef = useRef(null)
+  const factsInView = useInView(factsRef, { once: true })
+
   return (
-    <section className="relative section overflow-hidden" style={{ backgroundColor: 'var(--bg)' }}>
-      {/* Background grid */}
-      <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
-      <IconGrid opacity={0.025} />
+    <section className="section" style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid var(--border)' }}>
+      <div className="max-w-5xl mx-auto px-6">
 
-      {/* Ambient glow */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          top: '50%', left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '700px', height: '400px',
-          background: 'radial-gradient(ellipse, rgba(14,165,233,0.07) 0%, transparent 70%)',
-          filter: 'blur(30px)',
-        }}
-      />
-
-      <div className="relative max-w-7xl mx-auto px-6">
-
-        {/* Badge */}
-        <FadeUp className="mb-6 flex items-center gap-3">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest"
-            style={{ border: '1px solid rgba(14,165,233,0.35)', backgroundColor: 'rgba(14,165,233,0.07)', color: '#0EA5E9' }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-            Official Loxone Partner
+        {/* Header */}
+        <div ref={headerRef} className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16 md:mb-20">
+          <div className="hidden md:block md:col-span-1">
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={headerInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.4 }}
+              className="text-xs font-mono tabular-nums"
+              style={{ color: 'var(--text-4)' }}
+            >
+              05
+            </motion.span>
           </div>
-        </FadeUp>
 
-        {/* Headline */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <FadeUp>
-            <h2 className="text-4xl md:text-6xl font-black text-white leading-none mb-6">
-              Your Building,{' '}
-              <span style={{ color: '#0EA5E9' }}>Fully Alive.</span>
-            </h2>
-            <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--text-2)' }}>
-              ForceX Tech is a certified Loxone Partner — one of the world's most advanced building automation platforms. We design, program, and install complete Loxone systems for homes, offices, dental practices, hotels, and commercial buildings across Northern California.
-            </p>
-            <p className="text-base leading-relaxed mb-10" style={{ color: 'var(--text-3)' }}>
-              Loxone is not Alexa. It's not a collection of Wi-Fi gadgets. It's a single, wired, locally-run platform that controls lighting, climate, shading, audio, security, and energy — all from one app, with zero monthly fees and no cloud dependency.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/loxone"
-                className="px-8 py-4 text-base font-bold text-white rounded text-center transition-all duration-200"
-                style={{ backgroundColor: '#0EA5E9' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0284C7' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9' }}
+          <div className="md:col-span-7">
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={headerInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.4 }}
+              className="section-label"
+            >
+              Loxone Certified Partner
+            </motion.span>
+            <div className="overflow-hidden mt-2">
+              <motion.h2
+                initial={{ y: '100%' }}
+                animate={headerInView ? { y: '0%' } : {}}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+                className="text-5xl md:text-6xl lg:text-7xl font-black leading-none"
+                style={{ color: 'var(--text-1)', letterSpacing: '-0.04em' }}
               >
+                Your Building,
+              </motion.h2>
+            </div>
+            <div className="overflow-hidden">
+              <motion.h2
+                initial={{ y: '100%' }}
+                animate={headerInView ? { y: '0%' } : {}}
+                transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] }}
+                className="text-5xl md:text-6xl lg:text-7xl font-black leading-none"
+                style={{ color: '#0EA5E9', letterSpacing: '-0.04em' }}
+              >
+                Fully Alive.
+              </motion.h2>
+            </div>
+          </div>
+
+          <div className="md:col-span-4 flex flex-col justify-end gap-6">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={headerInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.22, ease: 'easeOut' }}
+              className="text-sm leading-relaxed"
+              style={{ color: 'var(--text-2)' }}
+            >
+              We design, program, and install complete Loxone systems — a single, wired, locally-run platform that controls lighting, climate, shading, audio, security, and energy with zero monthly fees and no cloud dependency.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={headerInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.34 }}
+              className="flex flex-wrap gap-3"
+            >
+              <Link href="/loxone" className="btn-primary" style={{ fontSize: '14px', padding: '10px 20px' }}>
                 Explore Loxone →
               </Link>
-              <Link
-                href="/contact"
-                className="px-8 py-4 text-base font-bold text-white rounded text-center transition-all duration-200"
-                style={{ border: '1px solid #26262E' }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = '#0EA5E9'
-                  ;(e.currentTarget as HTMLElement).style.color = '#0EA5E9'
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-2)'
-                  ;(e.currentTarget as HTMLElement).style.color = '#ffffff'
-                }}
-              >
-                Book a Consultation
+              <Link href="/contact" className="btn-outline" style={{ fontSize: '14px', padding: '10px 20px' }}>
+                Book Consult
               </Link>
-            </div>
-          </FadeUp>
-
-          {/* Why Loxone stats */}
-          <FadeUp delay={0.15}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 h-full">
-              {whyLoxone.map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 + i * 0.08, ease: 'easeOut' }}
-                  className="p-6 rounded-lg flex flex-col gap-2"
-                  style={{ backgroundColor: 'var(--bg-2)', border: '1px solid #1C1C22' }}
-                >
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#0EA5E9' }} />
-                  <h4 className="text-base font-bold text-white">{item.label}</h4>
-                  <p className="text-sm" style={{ color: 'var(--text-3)' }}>{item.sub}</p>
-                </motion.div>
-              ))}
-            </div>
-          </FadeUp>
+            </motion.div>
+          </div>
         </div>
 
-        {/* Divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
+        {/* Capabilities label */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          style={{ height: '1px', backgroundColor: 'var(--bg-4)', transformOrigin: 'left', marginBottom: '4rem' }}
-        />
+          transition={{ duration: 0.4 }}
+          className="text-xs font-bold uppercase tracking-[0.18em]"
+          style={{ color: 'var(--text-4)' }}
+        >
+          What We Automate
+        </motion.p>
 
-        {/* Capabilities grid */}
-        <FadeUp className="mb-8">
-          <p className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: '#0EA5E9' }}>
-            What We Can Automate For You
-          </p>
-        </FadeUp>
+        <div style={{ borderTop: '1px solid var(--border)', marginTop: '1rem' }} />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
-          {capabilities.map((cap, i) => (
+        {/* Capabilities list */}
+        {capabilities.map((cap, i) => (
+          <CapabilityRow key={cap.number} cap={cap} index={i} />
+        ))}
+
+        {/* Facts strip */}
+        <div
+          ref={factsRef}
+          className="grid grid-cols-2 md:grid-cols-4 mt-16"
+          style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}
+        >
+          {facts.map((f, i) => (
             <motion.div
-              key={cap.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.07, ease: 'easeOut' }}
-              className="group flex gap-4 p-6 rounded-lg transition-all duration-300"
-              style={{ backgroundColor: 'var(--bg-2)', border: '1px solid #1C1C22' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(14,165,233,0.3)' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)' }}
+              key={f.value}
+              initial={{ opacity: 0, y: 8 }}
+              animate={factsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.45, delay: i * 0.07 }}
+              className="py-6 px-4 flex flex-col gap-1.5"
+              style={{
+                borderRight: i < facts.length - 1 ? '1px solid var(--border)' : 'none',
+                borderBottom: i < 2 ? '1px solid var(--border)' : 'none',
+              }}
             >
-              <motion.div
-                className="w-10 h-10 flex items-center justify-center rounded flex-shrink-0 mt-0.5"
-                style={{ color: '#0EA5E9', backgroundColor: 'rgba(14,165,233,0.08)' }}
-                whileHover={{
-                  scale: 1.15,
-                  backgroundColor: 'rgba(14,165,233,0.18)',
-                  filter: 'drop-shadow(0 0 6px rgba(14,165,233,0.4))',
-                }}
-                transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+              <span
+                className="text-xl font-black"
+                style={{ color: 'var(--text-1)', letterSpacing: '-0.03em' }}
               >
-                {cap.icon}
-              </motion.div>
-              <div>
-                <h4 className="text-sm font-bold text-white mb-1">{cap.title}</h4>
-                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-3)' }}>{cap.desc}</p>
-              </div>
+                {f.value}
+              </span>
+              <span className="text-xs leading-snug" style={{ color: 'var(--text-4)' }}>
+                {f.label}
+              </span>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom CTA strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-8 rounded-lg"
-          style={{ backgroundColor: 'var(--bg-2)', border: '1px solid rgba(14,165,233,0.2)' }}
-        >
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#0EA5E9' }}>
-              The Smartest Tech is the Tech You Never Notice
-            </p>
-            <p className="text-lg font-bold text-white">
-              Ready to make your building work for you — automatically?
-            </p>
-          </div>
-          <Link
-            href="/loxone"
-            className="flex-shrink-0 px-8 py-4 text-sm font-bold text-white rounded transition-all duration-200 whitespace-nowrap"
-            style={{ border: '1px solid #0EA5E9', color: '#0EA5E9' }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9'
-              ;(e.currentTarget as HTMLElement).style.color = '#ffffff'
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'
-              ;(e.currentTarget as HTMLElement).style.color = '#0EA5E9'
-            }}
-          >
-            Deep Dive into Loxone →
-          </Link>
-        </motion.div>
       </div>
     </section>
   )
