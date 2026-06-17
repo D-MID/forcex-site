@@ -17,14 +17,11 @@ const navLinks = [
 
 function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-0 group">
+    <Link href="/" className="flex items-center gap-0 group" aria-label="ForceX Tech — Home">
       <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* FORCE text */}
-        <text x="0" y="28" fontFamily="-apple-system, system-ui, sans-serif" fontSize="26" fontWeight="900" fill="white" letterSpacing="-1">FORCE</text>
-        {/* X in red - bold italic style */}
-        <text x="93" y="28" fontFamily="-apple-system, system-ui, sans-serif" fontSize="30" fontWeight="900" fill="#DC2626" letterSpacing="-1" transform="skewX(-8)">X</text>
-        {/* TECH below */}
-        <text x="1" y="40" fontFamily="-apple-system, system-ui, sans-serif" fontSize="11" fontWeight="700" fill="#52525B" letterSpacing="6">TECH</text>
+        <text x="0" y="28" fontFamily="Inter, -apple-system, sans-serif" fontSize="26" fontWeight="900" fill="#F0F6FC" letterSpacing="-1">FORCE</text>
+        <text x="93" y="28" fontFamily="Inter, -apple-system, sans-serif" fontSize="30" fontWeight="900" fill="#0EA5E9" letterSpacing="-1" transform="skewX(-8)">X</text>
+        <text x="1" y="40" fontFamily="Inter, -apple-system, sans-serif" fontSize="11" fontWeight="700" fill="#484F58" letterSpacing="6">TECH</text>
       </svg>
     </Link>
   )
@@ -41,37 +38,35 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    setMobileOpen(false)
-  }, [pathname])
+  useEffect(() => { setMobileOpen(false) }, [pathname])
 
   return (
     <>
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          backgroundColor: scrolled ? 'rgba(8,8,10,0.97)' : 'rgba(8,8,10,0.7)',
-          backdropFilter: 'blur(16px)',
-          borderBottom: scrolled ? '1px solid #1C1C22' : '1px solid transparent',
+          backgroundColor: scrolled ? 'rgba(8,11,18,0.97)' : 'rgba(8,11,18,0.6)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderBottom: scrolled ? '1px solid #21262D' : '1px solid transparent',
         }}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-          {/* Logo */}
           <Logo />
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-7" role="navigation" aria-label="Main navigation">
             {navLinks.map((link) => (
               link.highlight ? (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-bold transition-colors duration-200 flex items-center gap-1.5"
-                  style={{ color: pathname === link.href ? '#ffffff' : '#DC2626' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#DC2626' }}
+                  className="text-sm font-semibold transition-colors duration-200 flex items-center gap-1.5"
+                  style={{ color: pathname === link.href ? '#F0F6FC' : '#0EA5E9' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#38BDF8' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = pathname === link.href ? '#F0F6FC' : '#0EA5E9' }}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full dot-pulse" style={{ backgroundColor: '#0EA5E9' }} />
                   {link.label}
                 </Link>
               ) : (
@@ -79,9 +74,9 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className="text-sm font-medium transition-colors duration-200"
-                  style={{ color: pathname === link.href ? '#DC2626' : '#A1A1AA' }}
-                  onMouseEnter={(e) => { if (pathname !== link.href) (e.target as HTMLElement).style.color = '#ffffff' }}
-                  onMouseLeave={(e) => { if (pathname !== link.href) (e.target as HTMLElement).style.color = '#A1A1AA' }}
+                  style={{ color: pathname === link.href ? '#F0F6FC' : '#8B949E' }}
+                  onMouseEnter={(e) => { if (pathname !== link.href) (e.target as HTMLElement).style.color = '#F0F6FC' }}
+                  onMouseLeave={(e) => { if (pathname !== link.href) (e.target as HTMLElement).style.color = '#8B949E' }}
                 >
                   {link.label}
                 </Link>
@@ -89,25 +84,29 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Right side — phone + CTA */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Right — phone + CTA */}
+          <div className="hidden md:flex items-center gap-5">
             <a
               href="tel:+19165995514"
-              className="text-sm font-medium transition-colors duration-200"
-              style={{ color: '#A1A1AA' }}
-              onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#ffffff' }}
-              onMouseLeave={(e) => { (e.target as HTMLElement).style.color = '#A1A1AA' }}
+              className="text-sm font-medium transition-colors duration-200 flex items-center gap-2"
+              style={{ color: '#8B949E' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#F0F6FC' }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#8B949E' }}
+              aria-label="Call ForceX Tech"
             >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.0 1.13 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.83a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
               (916) 599-5514
             </a>
             <Link
               href="/contact"
-              className="px-4 py-2 text-sm font-semibold text-white rounded transition-all duration-200"
-              style={{ backgroundColor: '#DC2626' }}
-              onMouseEnter={(e) => { (e.target as HTMLElement).style.backgroundColor = '#B91C1C' }}
-              onMouseLeave={(e) => { (e.target as HTMLElement).style.backgroundColor = '#DC2626' }}
+              className="px-5 py-2.5 text-sm font-semibold text-white rounded-lg transition-all duration-200"
+              style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px rgba(14,165,233,0.3)' }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)'; (e.currentTarget as HTMLElement).style.transform = 'none'; (e.currentTarget as HTMLElement).style.boxShadow = 'none' }}
             >
-              Get a Quote
+              Request Assessment
             </Link>
           </div>
 
@@ -115,29 +114,23 @@ export function Navbar() {
           <button
             className="md:hidden flex flex-col gap-1.5 p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileOpen}
           >
-            <span
-              className="block w-5 h-0.5 transition-all duration-300"
-              style={{
-                backgroundColor: '#ffffff',
-                transform: mobileOpen ? 'translateY(8px) rotate(45deg)' : 'none',
-              }}
-            />
-            <span
-              className="block w-5 h-0.5 transition-all duration-300"
-              style={{
-                backgroundColor: '#ffffff',
-                opacity: mobileOpen ? 0 : 1,
-              }}
-            />
-            <span
-              className="block w-5 h-0.5 transition-all duration-300"
-              style={{
-                backgroundColor: '#ffffff',
-                transform: mobileOpen ? 'translateY(-8px) rotate(-45deg)' : 'none',
-              }}
-            />
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                className="block w-5 h-0.5 transition-all duration-300"
+                style={{
+                  backgroundColor: '#F0F6FC',
+                  transform: mobileOpen
+                    ? i === 0 ? 'translateY(8px) rotate(45deg)'
+                    : i === 2 ? 'translateY(-8px) rotate(-45deg)' : 'none'
+                    : 'none',
+                  opacity: mobileOpen && i === 1 ? 0 : 1,
+                }}
+              />
+            ))}
           </button>
         </div>
       </header>
@@ -146,40 +139,40 @@ export function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
             className="fixed top-16 left-0 right-0 z-40 border-b"
-            style={{ backgroundColor: '#08080A', borderColor: '#1C1C22' }}
+            style={{ backgroundColor: 'rgba(8,11,18,0.98)', borderColor: '#21262D', backdropFilter: 'blur(20px)' }}
           >
-            <nav className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-4">
+            <nav className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-base font-medium py-2 border-b"
-                  style={{
-                    color: pathname === link.href ? '#DC2626' : '#A1A1AA',
-                    borderColor: '#1C1C22',
-                  }}
+                  className="text-base font-medium py-3 border-b flex items-center justify-between"
+                  style={{ color: pathname === link.href ? '#0EA5E9' : '#8B949E', borderColor: '#21262D' }}
                 >
                   {link.label}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
                 </Link>
               ))}
-              <div className="pt-2 flex flex-col gap-3">
-                <a
-                  href="tel:+19165995514"
-                  className="text-base font-semibold text-white"
-                >
+              <div className="pt-4 flex flex-col gap-3">
+                <a href="tel:+19165995514" className="text-base font-bold flex items-center gap-2" style={{ color: '#F0F6FC' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth="2">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.0 1.13 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 6.83a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                  </svg>
                   (916) 599-5514
                 </a>
                 <Link
                   href="/contact"
-                  className="px-6 py-3 text-center text-sm font-bold text-white rounded"
-                  style={{ backgroundColor: '#DC2626' }}
+                  className="px-6 py-3.5 text-center text-sm font-bold text-white rounded-lg"
+                  style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)' }}
                 >
-                  Get a Free Quote
+                  Request a Site Assessment
                 </Link>
               </div>
             </nav>

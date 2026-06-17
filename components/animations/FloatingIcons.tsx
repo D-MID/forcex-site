@@ -54,7 +54,7 @@ export function FloatingIcons() {
               height={icon.size}
               viewBox="0 0 24 24"
               fill="none"
-              stroke="rgba(220,38,38,0.6)"
+              stroke="rgba(14,165,233,0.6)"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"

@@ -45,19 +45,19 @@ const industries = [
 
 export function IndustriesGrid() {
   return (
-    <section className="section" style={{ backgroundColor: '#0D0D10' }}>
+    <section className="section" style={{ backgroundColor: 'var(--bg-2)' }}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
         <FadeUp className="mb-16">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>
             Who We Serve
           </p>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <h2 className="text-4xl md:text-5xl font-black text-white">
               <TextReveal text="Built for Your Industry" />
             </h2>
-            <p className="text-base max-w-sm" style={{ color: '#A1A1AA' }}>
+            <p className="text-base max-w-sm" style={{ color: 'var(--text-2)' }}>
               Every sector has unique technology needs. We know yours.
             </p>
           </div>
@@ -81,7 +81,7 @@ export function IndustriesGrid() {
                 {/* Number */}
                 <span
                   className="text-sm font-mono font-bold flex-shrink-0"
-                  style={{ color: '#DC2626', minWidth: '32px' }}
+                  style={{ color: '#0EA5E9', minWidth: '32px' }}
                 >
                   {industry.number}
                 </span>
@@ -90,14 +90,14 @@ export function IndustriesGrid() {
                 <h3
                   className="text-xl md:text-2xl font-black flex-shrink-0 transition-colors duration-200"
                   style={{ color: '#ffffff', minWidth: '240px' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#DC2626' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#0EA5E9' }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
                 >
                   {industry.label}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm flex-1" style={{ color: '#71717A' }}>
+                <p className="text-sm flex-1" style={{ color: 'var(--text-3)' }}>
                   {industry.description}
                 </p>
 
@@ -107,7 +107,7 @@ export function IndustriesGrid() {
                     <span
                       key={tag}
                       className="px-2.5 py-1 text-xs rounded"
-                      style={{ backgroundColor: 'rgba(220,38,38,0.08)', color: '#DC2626', border: '1px solid rgba(220,38,38,0.2)' }}
+                      style={{ backgroundColor: 'rgba(14,165,233,0.08)', color: '#0EA5E9', border: '1px solid rgba(14,165,233,0.2)' }}
                     >
                       {tag}
                     </span>
@@ -117,7 +117,7 @@ export function IndustriesGrid() {
                 {/* Arrow */}
                 <span
                   className="hidden md:block text-xl transition-all duration-300 group-hover:translate-x-2"
-                  style={{ color: '#DC2626' }}
+                  style={{ color: '#0EA5E9' }}
                 >
                   →
                 </span>

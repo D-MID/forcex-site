@@ -175,7 +175,7 @@ export default function LoxonePage() {
         {/* Hero */}
         <section
           className="relative min-h-[70vh] flex items-end pb-20 overflow-hidden hero-scan"
-          style={{ backgroundColor: '#08080A', paddingTop: '120px' }}
+          style={{ backgroundColor: 'var(--bg)', paddingTop: '120px' }}
         >
           <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
           <motion.div
@@ -185,7 +185,7 @@ export default function LoxonePage() {
             className="absolute top-0 right-0 pointer-events-none"
             style={{
               width: '700px', height: '600px',
-              background: 'radial-gradient(ellipse at top right, rgba(220,38,38,0.15) 0%, transparent 60%)',
+              background: 'radial-gradient(ellipse at top right, rgba(14,165,233,0.15) 0%, transparent 60%)',
               filter: 'blur(20px)',
             }}
           />
@@ -195,9 +195,9 @@ export default function LoxonePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-xs font-bold uppercase tracking-widest"
-              style={{ border: '1px solid rgba(220,38,38,0.35)', backgroundColor: 'rgba(220,38,38,0.07)', color: '#DC2626' }}
+              style={{ border: '1px solid rgba(14,165,233,0.35)', backgroundColor: 'rgba(14,165,233,0.07)', color: '#0EA5E9' }}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
               Certified Loxone Partner · Sacramento, CA
             </motion.div>
 
@@ -217,7 +217,7 @@ export default function LoxonePage() {
                 animate={{ y: '0%' }}
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none"
-                style={{ color: '#DC2626' }}
+                style={{ color: '#0EA5E9' }}
               >
                 Automation.
               </motion.h1>
@@ -228,7 +228,7 @@ export default function LoxonePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.7 }}
               className="text-xl max-w-2xl leading-relaxed mb-10"
-              style={{ color: '#A1A1AA' }}
+              style={{ color: 'var(--text-2)' }}
             >
               One platform. Every system. Zero monthly fees. ForceX Tech designs, programs, and installs complete Loxone automation for homes, offices, and commercial buildings across Northern California.
             </motion.p>
@@ -242,9 +242,9 @@ export default function LoxonePage() {
               <Link
                 href="/contact"
                 className="px-8 py-4 text-base font-bold text-white rounded transition-all duration-200"
-                style={{ backgroundColor: '#DC2626' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#B91C1C' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#DC2626' }}
+                style={{ backgroundColor: '#0EA5E9' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0284C7' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9' }}
               >
                 Book a Free Consultation
               </Link>
@@ -253,11 +253,11 @@ export default function LoxonePage() {
                 className="px-8 py-4 text-base font-bold text-white rounded transition-all duration-200"
                 style={{ border: '1px solid #26262E' }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = '#DC2626'
-                  ;(e.currentTarget as HTMLElement).style.color = '#DC2626'
+                  (e.currentTarget as HTMLElement).style.borderColor = '#0EA5E9'
+                  ;(e.currentTarget as HTMLElement).style.color = '#0EA5E9'
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = '#26262E'
+                  (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-2)'
                   ;(e.currentTarget as HTMLElement).style.color = '#ffffff'
                 }}
               >
@@ -268,23 +268,23 @@ export default function LoxonePage() {
         </section>
 
         {/* What is Loxone */}
-        <section className="section" style={{ backgroundColor: '#0D0D10', borderTop: '1px solid #1C1C22' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg-2)', borderTop: '1px solid #1C1C22' }}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <FadeUp>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-4" style={{ color: '#DC2626' }}>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-4" style={{ color: '#0EA5E9' }}>
                   What Is Loxone?
                 </p>
                 <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
                   The Smartest Tech is the Tech You Never Notice.
                 </h2>
-                <p className="text-base leading-relaxed mb-6" style={{ color: '#A1A1AA' }}>
+                <p className="text-base leading-relaxed mb-6" style={{ color: 'var(--text-2)' }}>
                   Loxone is a professional building automation platform built around a central Miniserver — a small computer that lives in your electrical panel and controls your entire building from a single, locally-run system. Unlike smart home gadgets that rely on Wi-Fi and cloud servers, Loxone runs entirely inside your building.
                 </p>
-                <p className="text-base leading-relaxed mb-6" style={{ color: '#A1A1AA' }}>
+                <p className="text-base leading-relaxed mb-6" style={{ color: 'var(--text-2)' }}>
                   Lighting adjusts. Climate balances. Blinds move. Music plays. Security arms. Energy optimizes. All automatically, all coordinated, all from one app — with no subscriptions and no cloud dependency.
                 </p>
-                <p className="text-base leading-relaxed" style={{ color: '#71717A' }}>
+                <p className="text-base leading-relaxed" style={{ color: 'var(--text-3)' }}>
                   Loxone is active in 300,000+ installations worldwide — from luxury homes and dental offices to hotels, warehouses, and government buildings. ForceX Tech brings this technology to Sacramento and Northern California.
                 </p>
               </FadeUp>
@@ -300,19 +300,19 @@ export default function LoxonePage() {
                     <div
                       key={stat.label}
                       className="p-6 rounded-lg"
-                      style={{ backgroundColor: '#08080A', border: '1px solid #1C1C22' }}
+                      style={{ backgroundColor: 'var(--bg)', border: '1px solid #1C1C22' }}
                     >
-                      <p className="text-3xl font-black mb-1" style={{ color: '#DC2626', fontFamily: 'monospace' }}>
+                      <p className="text-3xl font-black mb-1" style={{ color: '#0EA5E9', fontFamily: 'monospace' }}>
                         {stat.value}
                       </p>
-                      <p className="text-sm" style={{ color: '#71717A' }}>{stat.label}</p>
+                      <p className="text-sm" style={{ color: 'var(--text-3)' }}>{stat.label}</p>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-6 p-6 rounded-lg" style={{ border: '1px solid rgba(220,38,38,0.2)', backgroundColor: 'rgba(220,38,38,0.03)' }}>
+                <div className="mt-6 p-6 rounded-lg" style={{ border: '1px solid rgba(14,165,233,0.2)', backgroundColor: 'rgba(14,165,233,0.03)' }}>
                   <p className="text-sm font-bold text-white mb-2">No dealer lock-in.</p>
-                  <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-3)' }}>
                     At project handoff, you receive full admin credentials to your Loxone system. Any certified partner worldwide can service it. Your automation belongs to you — not us.
                   </p>
                 </div>
@@ -322,10 +322,10 @@ export default function LoxonePage() {
         </section>
 
         {/* Loxone vs Everything Else */}
-        <section className="section" style={{ backgroundColor: '#08080A', borderTop: '1px solid #1C1C22' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid #1C1C22' }}>
           <div className="max-w-7xl mx-auto px-6">
             <FadeUp className="mb-12 text-center">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#DC2626' }}>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#0EA5E9' }}>
                 Why Professional Beats Consumer
               </p>
               <h2 className="text-4xl md:text-5xl font-black text-white">
@@ -338,9 +338,9 @@ export default function LoxonePage() {
                 <table className="w-full text-sm" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
                   <thead>
                     <tr>
-                      <th className="text-left p-4 text-xs font-bold uppercase tracking-wider" style={{ color: '#52525B', borderBottom: '1px solid #1C1C22', width: '35%' }}>Feature</th>
-                      <th className="text-center p-4 text-xs font-bold uppercase tracking-wider" style={{ color: '#DC2626', borderBottom: '1px solid #1C1C22' }}>Loxone + ForceX Tech</th>
-                      <th className="text-center p-4 text-xs font-bold uppercase tracking-wider" style={{ color: '#52525B', borderBottom: '1px solid #1C1C22' }}>Wi-Fi Gadgets (Ring, Nest, Hue)</th>
+                      <th className="text-left p-4 text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--text-4)', borderBottom: '1px solid #1C1C22', width: '35%' }}>Feature</th>
+                      <th className="text-center p-4 text-xs font-bold uppercase tracking-wider" style={{ color: '#0EA5E9', borderBottom: '1px solid #1C1C22' }}>Loxone + ForceX Tech</th>
+                      <th className="text-center p-4 text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--text-4)', borderBottom: '1px solid #1C1C22' }}>Wi-Fi Gadgets (Ring, Nest, Hue)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -360,9 +360,9 @@ export default function LoxonePage() {
                         key={feature}
                         style={{ backgroundColor: i % 2 === 0 ? '#0D0D10' : '#08080A' }}
                       >
-                        <td className="p-4 font-medium" style={{ color: '#A1A1AA', borderBottom: '1px solid #1C1C22' }}>{feature}</td>
+                        <td className="p-4 font-medium" style={{ color: 'var(--text-2)', borderBottom: '1px solid #1C1C22' }}>{feature}</td>
                         <td className="p-4 text-center font-bold" style={{ color: '#22c55e', borderBottom: '1px solid #1C1C22' }}>{loxone}</td>
-                        <td className="p-4 text-center" style={{ color: '#52525B', borderBottom: '1px solid #1C1C22' }}>{consumer}</td>
+                        <td className="p-4 text-center" style={{ color: 'var(--text-4)', borderBottom: '1px solid #1C1C22' }}>{consumer}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -373,10 +373,10 @@ export default function LoxonePage() {
         </section>
 
         {/* 8 Systems */}
-        <section className="section" style={{ backgroundColor: '#0D0D10', borderTop: '1px solid #1C1C22' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg-2)', borderTop: '1px solid #1C1C22' }}>
           <div className="max-w-7xl mx-auto px-6">
             <FadeUp className="mb-16">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#DC2626' }}>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#0EA5E9' }}>
                 Complete Building Control
               </p>
               <h2 className="text-4xl md:text-5xl font-black text-white max-w-2xl">
@@ -397,32 +397,32 @@ export default function LoxonePage() {
                   key={system.number}
                   variants={itemVariants}
                   className="group p-8 md:p-10 transition-colors duration-300"
-                  style={{ backgroundColor: '#0D0D10', borderBottom: '1px solid #1C1C22' }}
+                  style={{ backgroundColor: 'var(--bg-2)', borderBottom: '1px solid #1C1C22' }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#121215' }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0D0D10' }}
                 >
                   <div className="flex flex-col lg:flex-row gap-8">
                     {/* Number + Title */}
                     <div className="flex-shrink-0 lg:w-72">
-                      <span className="text-4xl font-black block mb-2" style={{ color: 'rgba(220,38,38,0.2)', fontFamily: 'monospace' }}>
+                      <span className="text-4xl font-black block mb-2" style={{ color: 'rgba(14,165,233,0.2)', fontFamily: 'monospace' }}>
                         {system.number}
                       </span>
                       <h3 className="text-xl font-black text-white mb-2">{system.title}</h3>
-                      <p className="text-xs font-bold uppercase tracking-wider" style={{ color: '#52525B' }}>
+                      <p className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--text-4)' }}>
                         Ideal for: {system.ideal}
                       </p>
                     </div>
 
                     {/* Content */}
                     <div className="flex-1">
-                      <p className="text-base leading-relaxed mb-6" style={{ color: '#A1A1AA' }}>
+                      <p className="text-base leading-relaxed mb-6" style={{ color: 'var(--text-2)' }}>
                         {system.description}
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {system.capabilities.map((cap) => (
                           <div key={cap} className="flex items-start gap-2">
-                            <span className="text-red-600 flex-shrink-0 mt-0.5 text-sm">→</span>
-                            <span className="text-sm" style={{ color: '#71717A' }}>{cap}</span>
+                            <span className="text-blue-400 flex-shrink-0 mt-0.5 text-sm">→</span>
+                            <span className="text-sm" style={{ color: 'var(--text-3)' }}>{cap}</span>
                           </div>
                         ))}
                       </div>
@@ -435,10 +435,10 @@ export default function LoxonePage() {
         </section>
 
         {/* Who It's For */}
-        <section className="section" style={{ backgroundColor: '#08080A', borderTop: '1px solid #1C1C22' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid #1C1C22' }}>
           <div className="max-w-7xl mx-auto px-6">
             <FadeUp className="mb-12">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#DC2626' }}>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#0EA5E9' }}>
                 Who We Build For
               </p>
               <h2 className="text-4xl md:text-5xl font-black text-white">
@@ -486,18 +486,18 @@ export default function LoxonePage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.07, ease: 'easeOut' }}
                   className="p-8 rounded-lg transition-all duration-300"
-                  style={{ backgroundColor: '#0D0D10', border: '1px solid #1C1C22' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(220,38,38,0.3)' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1C1C22' }}
+                  style={{ backgroundColor: 'var(--bg-2)', border: '1px solid #1C1C22' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(14,165,233,0.3)' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)' }}
                 >
                   <h3 className="text-lg font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: '#71717A' }}>{item.desc}</p>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-3)' }}>{item.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
                         className="px-3 py-1 text-xs font-medium rounded"
-                        style={{ backgroundColor: '#1C1C22', color: '#A1A1AA' }}
+                        style={{ backgroundColor: 'var(--bg-4)', color: 'var(--text-2)' }}
                       >
                         {tag}
                       </span>
@@ -510,10 +510,10 @@ export default function LoxonePage() {
         </section>
 
         {/* FAQ */}
-        <section className="section" style={{ backgroundColor: '#0D0D10', borderTop: '1px solid #1C1C22' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg-2)', borderTop: '1px solid #1C1C22' }}>
           <div className="max-w-4xl mx-auto px-6">
             <FadeUp className="mb-12 text-center">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#DC2626' }}>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] mb-3" style={{ color: '#0EA5E9' }}>
                 Common Questions
               </p>
               <h2 className="text-4xl font-black text-white">Loxone FAQ</h2>
@@ -528,15 +528,15 @@ export default function LoxonePage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.05, ease: 'easeOut' }}
                   className="p-8"
-                  style={{ backgroundColor: '#0D0D10', borderBottom: '1px solid #1C1C22' }}
+                  style={{ backgroundColor: 'var(--bg-2)', borderBottom: '1px solid #1C1C22' }}
                 >
                   <div className="flex gap-4">
-                    <span className="text-xs font-black pt-1 flex-shrink-0" style={{ color: '#DC2626', fontFamily: 'monospace' }}>
+                    <span className="text-xs font-black pt-1 flex-shrink-0" style={{ color: '#0EA5E9', fontFamily: 'monospace' }}>
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <div>
                       <h3 className="text-base font-bold text-white mb-3">{faq.q}</h3>
-                      <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>{faq.a}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: 'var(--text-3)' }}>{faq.a}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -548,32 +548,32 @@ export default function LoxonePage() {
         {/* Final CTA */}
         <section
           className="relative py-32 overflow-hidden"
-          style={{ backgroundColor: '#08080A', borderTop: '1px solid #1C1C22' }}
+          style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid #1C1C22' }}
         >
           <div
             className="absolute inset-0 pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse at center, rgba(220,38,38,0.1) 0%, transparent 70%)' }}
+            style={{ background: 'radial-gradient(ellipse at center, rgba(14,165,233,0.1) 0%, transparent 70%)' }}
           />
           <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
           <div className="relative max-w-4xl mx-auto px-6 text-center">
             <FadeUp>
-              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#DC2626' }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#0EA5E9' }}>
                 Ready to Start?
               </p>
               <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
                 Let's Build a Building{' '}
-                <span style={{ color: '#DC2626' }}>That Works For You.</span>
+                <span style={{ color: '#0EA5E9' }}>That Works For You.</span>
               </h2>
-              <p className="text-lg mb-10 max-w-2xl mx-auto" style={{ color: '#A1A1AA' }}>
+              <p className="text-lg mb-10 max-w-2xl mx-auto" style={{ color: 'var(--text-2)' }}>
                 Free consultation. No pressure. We walk through your space, understand your goals, and tell you exactly what Loxone can do — and what it costs.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
                   href="/contact"
                   className="px-8 py-4 text-base font-bold text-white rounded transition-all duration-200"
-                  style={{ backgroundColor: '#DC2626', minWidth: '240px', textAlign: 'center' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#B91C1C' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#DC2626' }}
+                  style={{ backgroundColor: '#0EA5E9', minWidth: '240px', textAlign: 'center' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0284C7' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9' }}
                 >
                   Book a Free Consultation
                 </Link>
@@ -582,11 +582,11 @@ export default function LoxonePage() {
                   className="px-8 py-4 text-base font-bold text-white rounded transition-all duration-200"
                   style={{ border: '1px solid #26262E', minWidth: '240px', textAlign: 'center' }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = '#DC2626'
-                    ;(e.currentTarget as HTMLElement).style.color = '#DC2626'
+                    (e.currentTarget as HTMLElement).style.borderColor = '#0EA5E9'
+                    ;(e.currentTarget as HTMLElement).style.color = '#0EA5E9'
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = '#26262E'
+                    (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-2)'
                     ;(e.currentTarget as HTMLElement).style.color = '#ffffff'
                   }}
                 >

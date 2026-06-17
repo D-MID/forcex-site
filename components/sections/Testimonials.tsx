@@ -30,12 +30,12 @@ const stars = Array(5).fill('★')
 
 export function Testimonials() {
   return (
-    <section className="section" style={{ backgroundColor: '#0D0D10' }}>
+    <section className="section" style={{ backgroundColor: 'var(--bg-2)' }}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
         <FadeUp className="mb-16 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>
             Client Results
           </p>
           <h2 className="text-4xl md:text-5xl font-black text-white">
@@ -44,17 +44,17 @@ export function Testimonials() {
         </FadeUp>
 
         {/* Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px" style={{ backgroundColor: '#1C1C22' }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px" style={{ backgroundColor: 'var(--bg-4)' }}>
           {testimonials.map((t, i) => (
             <FadeUp key={t.name} delay={i * 0.1}>
-              <div className="p-8 flex flex-col gap-6 h-full" style={{ backgroundColor: '#0D0D10' }}>
+              <div className="p-8 flex flex-col gap-6 h-full" style={{ backgroundColor: 'var(--bg-2)' }}>
                 {/* Stars */}
-                <div className="flex gap-1" style={{ color: '#DC2626' }}>
+                <div className="flex gap-1" style={{ color: '#0EA5E9' }}>
                   {stars.map((s, j) => <span key={j} className="text-base">{s}</span>)}
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-base leading-relaxed flex-1" style={{ color: '#A1A1AA' }}>
+                <blockquote className="text-base leading-relaxed flex-1" style={{ color: 'var(--text-2)' }}>
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
 
@@ -62,13 +62,13 @@ export function Testimonials() {
                 <div className="flex items-center gap-4 pt-4" style={{ borderTop: '1px solid #1C1C22' }}>
                   <div
                     className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
-                    style={{ backgroundColor: '#DC2626', color: '#ffffff' }}
+                    style={{ backgroundColor: '#0EA5E9', color: '#ffffff' }}
                   >
                     {t.initial}
                   </div>
                   <div>
                     <p className="text-sm font-bold text-white">{t.name}</p>
-                    <p className="text-xs" style={{ color: '#52525B' }}>
+                    <p className="text-xs" style={{ color: 'var(--text-4)' }}>
                       {t.role} · {t.company}
                     </p>
                   </div>

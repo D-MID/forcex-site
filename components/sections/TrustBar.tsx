@@ -20,11 +20,11 @@ const badges = [
 
 export function TrustBar() {
   return (
-    <section style={{ backgroundColor: '#0D0D10', borderTop: '1px solid #1C1C22', borderBottom: '1px solid #1C1C22' }}>
+    <section style={{ backgroundColor: 'var(--bg-2)', borderTop: '1px solid #1C1C22', borderBottom: '1px solid #1C1C22' }}>
 
       {/* Stats row */}
       <div className="max-w-7xl mx-auto px-6 py-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ backgroundColor: '#1C1C22' }}>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ backgroundColor: 'var(--bg-4)' }}>
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
@@ -33,20 +33,20 @@ export function TrustBar() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="flex flex-col items-center justify-center py-6 px-4 text-center"
-              style={{ backgroundColor: '#0D0D10' }}
+              style={{ backgroundColor: 'var(--bg-2)' }}
             >
-              <span className="text-2xl md:text-3xl font-black mb-1" style={{ color: '#DC2626', fontFamily: 'monospace' }}>
+              <span className="text-2xl md:text-3xl font-black mb-1" style={{ color: '#0EA5E9', fontFamily: 'monospace' }}>
                 {s.value}
               </span>
               <span className="text-sm font-bold text-white">{s.label}</span>
-              <span className="text-xs mt-0.5" style={{ color: '#52525B' }}>{s.sub}</span>
+              <span className="text-xs mt-0.5" style={{ color: 'var(--text-4)' }}>{s.sub}</span>
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* Badge strip */}
-      <div style={{ borderTop: '1px solid #1C1C22', backgroundColor: '#08080A' }}>
+      <div style={{ borderTop: '1px solid #1C1C22', backgroundColor: 'var(--bg)' }}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex flex-wrap items-center justify-center gap-3">
             {badges.map((b, i) => (
@@ -57,9 +57,9 @@ export function TrustBar() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-medium"
-                style={{ border: '1px solid #1C1C22', color: '#71717A', backgroundColor: '#0D0D10' }}
+                style={{ border: '1px solid #1C1C22', color: 'var(--text-3)', backgroundColor: 'var(--bg-2)' }}
               >
-                <span style={{ color: '#DC2626' }}>✓</span>
+                <span style={{ color: '#0EA5E9' }}>✓</span>
                 {b}
               </motion.span>
             ))}
@@ -72,9 +72,9 @@ export function TrustBar() {
               <Link
                 href="/about"
                 className="text-xs font-bold transition-colors duration-200"
-                style={{ color: '#DC2626' }}
+                style={{ color: '#0EA5E9' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#DC2626' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#0EA5E9' }}
               >
                 About Us →
               </Link>

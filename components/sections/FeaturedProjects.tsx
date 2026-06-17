@@ -31,13 +31,13 @@ const projects = [
 
 export function FeaturedProjects() {
   return (
-    <section className="section" style={{ backgroundColor: '#0D0D10' }}>
+    <section className="section" style={{ backgroundColor: 'var(--bg-2)' }}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
         <FadeUp className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>
               Featured Work
             </p>
             <h2 className="text-4xl md:text-5xl font-black text-white">
@@ -47,7 +47,7 @@ export function FeaturedProjects() {
           <Link
             href="/projects"
             className="text-sm font-bold transition-colors duration-200 flex-shrink-0"
-            style={{ color: '#DC2626' }}
+            style={{ color: '#0EA5E9' }}
           >
             View All Projects →
           </Link>
@@ -63,18 +63,18 @@ export function FeaturedProjects() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
               className="group flex flex-col lg:flex-row gap-8 p-8 lg:p-10 transition-colors duration-300"
-              style={{ backgroundColor: '#0D0D10', borderBottom: '1px solid #1C1C22' }}
+              style={{ backgroundColor: 'var(--bg-2)', borderBottom: '1px solid #1C1C22' }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#121215' }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0D0D10' }}
             >
               {/* Number + Category */}
               <div className="flex-shrink-0 flex flex-row lg:flex-col gap-4 lg:gap-2 lg:w-40">
-                <span className="text-3xl font-black" style={{ color: 'rgba(220,38,38,0.3)', fontFamily: 'monospace' }}>
+                <span className="text-3xl font-black" style={{ color: 'rgba(14,165,233,0.3)', fontFamily: 'monospace' }}>
                   {project.number}
                 </span>
                 <span
                   className="text-xs font-bold uppercase tracking-widest self-end lg:self-start"
-                  style={{ color: '#DC2626' }}
+                  style={{ color: '#0EA5E9' }}
                 >
                   {project.category}
                 </span>
@@ -82,10 +82,10 @@ export function FeaturedProjects() {
 
               {/* Content */}
               <div className="flex-1">
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-red-500 transition-colors duration-200">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-blue-500 transition-colors duration-200">
                   {project.title}
                 </h3>
-                <p className="text-base leading-relaxed mb-5" style={{ color: '#71717A' }}>
+                <p className="text-base leading-relaxed mb-5" style={{ color: 'var(--text-3)' }}>
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -93,7 +93,7 @@ export function FeaturedProjects() {
                     <span
                       key={tag}
                       className="px-3 py-1 text-xs font-medium rounded"
-                      style={{ backgroundColor: '#1C1C22', color: '#A1A1AA' }}
+                      style={{ backgroundColor: 'var(--bg-4)', color: 'var(--text-2)' }}
                     >
                       {tag}
                     </span>
@@ -105,7 +105,7 @@ export function FeaturedProjects() {
               <div className="hidden lg:flex items-center self-center">
                 <span
                   className="text-2xl transition-all duration-300 group-hover:translate-x-2"
-                  style={{ color: '#DC2626' }}
+                  style={{ color: '#0EA5E9' }}
                 >
                   →
                 </span>

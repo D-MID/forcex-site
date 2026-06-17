@@ -37,13 +37,13 @@ const pillars = [
 
 export function WhyForceX() {
   return (
-    <section className="section" style={{ backgroundColor: '#08080A', borderTop: '1px solid #1C1C22' }}>
+    <section className="section" style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid #1C1C22' }}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14">
           <FadeUp>
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>
               Why ForceX
             </p>
             <h2 className="text-4xl md:text-5xl font-black text-white">
@@ -54,9 +54,9 @@ export function WhyForceX() {
             <Link
               href="/about"
               className="text-sm font-bold transition-colors duration-200 flex-shrink-0"
-              style={{ color: '#DC2626' }}
+              style={{ color: '#0EA5E9' }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#DC2626' }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#0EA5E9' }}
             >
               Learn More About Us →
             </Link>
@@ -73,17 +73,17 @@ export function WhyForceX() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
               className="p-8 rounded-lg group"
-              style={{ backgroundColor: '#0D0D10', border: '1px solid #1C1C22' }}
-              whileHover={{ borderColor: 'rgba(220,38,38,0.2)' }}
+              style={{ backgroundColor: 'var(--bg-2)', border: '1px solid #1C1C22' }}
+              whileHover={{ borderColor: 'rgba(14,165,233,0.2)' }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs font-black" style={{ color: 'rgba(220,38,38,0.4)', fontFamily: 'monospace' }}>
+                <span className="text-xs font-black" style={{ color: 'rgba(14,165,233,0.4)', fontFamily: 'monospace' }}>
                   {pillar.number}
                 </span>
                 <motion.div
                   className="w-8 h-8 flex items-center justify-center rounded"
-                  style={{ color: '#DC2626', backgroundColor: 'rgba(220,38,38,0.08)', borderRadius: '6px' }}
-                  whileHover={{ scale: 1.15, filter: 'drop-shadow(0 0 6px rgba(220,38,38,0.5))' }}
+                  style={{ color: '#0EA5E9', backgroundColor: 'rgba(14,165,233,0.08)', borderRadius: '6px' }}
+                  whileHover={{ scale: 1.15, filter: 'drop-shadow(0 0 6px rgba(14,165,233,0.5))' }}
                   animate={{ rotate: [0, 0, 0] }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
@@ -93,10 +93,10 @@ export function WhyForceX() {
                 </motion.div>
               </div>
               <h3 className="text-lg font-bold text-white mb-3">{pillar.title}</h3>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: '#A1A1AA' }}>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-2)' }}>
                 {pillar.description}
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: '#52525B' }}>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-4)' }}>
                 {pillar.detail}
               </p>
             </motion.div>
@@ -107,20 +107,20 @@ export function WhyForceX() {
         <FadeUp delay={0.2} className="mt-8">
           <div
             className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-7 rounded-lg"
-            style={{ backgroundColor: '#0D0D10', border: '1px solid #1C1C22' }}
+            style={{ backgroundColor: 'var(--bg-2)', border: '1px solid #1C1C22' }}
           >
             <div>
               <p className="text-base font-bold text-white mb-1">Not sure what you need?</p>
-              <p className="text-sm" style={{ color: '#71717A' }}>
+              <p className="text-sm" style={{ color: 'var(--text-3)' }}>
                 Tell us about your situation and we'll tell you exactly what makes sense — and what doesn't.
               </p>
             </div>
             <Link
               href="/contact"
               className="flex-shrink-0 px-6 py-3 text-sm font-bold text-white rounded transition-all duration-200"
-              style={{ backgroundColor: '#DC2626' }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#B91C1C' }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#DC2626' }}
+              style={{ backgroundColor: '#0EA5E9' }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0284C7' }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9' }}
             >
               Talk to ForceX →
             </Link>

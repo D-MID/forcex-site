@@ -36,7 +36,7 @@ export function IconGrid({ opacity = 0.04 }: { opacity?: number }) {
             ease: 'easeInOut',
           }}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(220,38,38,0.7)" strokeWidth="1.5" strokeLinecap="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(14,165,233,0.7)" strokeWidth="1.5" strokeLinecap="round">
             <path d={techIcons[i % techIcons.length]} />
           </svg>
         </motion.div>

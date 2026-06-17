@@ -85,7 +85,7 @@ export function UnifiSection() {
   const [tab, setTab] = useState<'commercial' | 'residential'>('commercial')
 
   return (
-    <section className="section" style={{ backgroundColor: '#0D0D10', borderTop: '1px solid #1C1C22' }}>
+    <section className="section" style={{ backgroundColor: 'var(--bg-2)', borderTop: '1px solid #1C1C22' }}>
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
@@ -94,9 +94,9 @@ export function UnifiSection() {
             {/* Badge */}
             <div
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded text-xs font-bold uppercase tracking-widest mb-6"
-              style={{ border: '1px solid #26262E', color: '#A1A1AA', backgroundColor: '#0D0D10' }}
+              style={{ border: '1px solid #26262E', color: 'var(--text-2)', backgroundColor: 'var(--bg-2)' }}
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth="2">
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
               Professional Ubiquiti Installers
@@ -104,12 +104,12 @@ export function UnifiSection() {
 
             <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-5">
               Networks Built to{' '}
-              <span style={{ color: '#DC2626' }}>Perform.</span>
+              <span style={{ color: '#0EA5E9' }}>Perform.</span>
             </h2>
-            <p className="text-base leading-relaxed mb-6" style={{ color: '#A1A1AA' }}>
+            <p className="text-base leading-relaxed mb-6" style={{ color: 'var(--text-2)' }}>
               ForceX Tech designs and installs Ubiquiti UniFi networks for homes and businesses across Sacramento. UniFi gives you enterprise-grade reliability — fast, secure, and managed from a single dashboard — without the enterprise price tag.
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-3)' }}>
               Every install is site-surveyed, professionally cabled, and configured specifically for your space. No generic setups. No consumer-grade shortcuts.
             </p>
           </FadeUp>
@@ -122,9 +122,9 @@ export function UnifiSection() {
                 { value: 'Zero', label: 'Monthly cloud fees' },
                 { value: '∞', label: 'Scalable — add as you grow' },
               ].map((s) => (
-                <div key={s.label} className="p-5 rounded-lg" style={{ backgroundColor: '#08080A', border: '1px solid #1C1C22' }}>
-                  <p className="text-2xl font-black mb-1" style={{ color: '#DC2626', fontFamily: 'monospace' }}>{s.value}</p>
-                  <p className="text-xs" style={{ color: '#71717A' }}>{s.label}</p>
+                <div key={s.label} className="p-5 rounded-lg" style={{ backgroundColor: 'var(--bg)', border: '1px solid #1C1C22' }}>
+                  <p className="text-2xl font-black mb-1" style={{ color: '#0EA5E9', fontFamily: 'monospace' }}>{s.value}</p>
+                  <p className="text-xs" style={{ color: 'var(--text-3)' }}>{s.label}</p>
                 </div>
               ))}
             </div>
@@ -135,7 +135,7 @@ export function UnifiSection() {
         <FadeUp className="mb-8">
           <div
             className="inline-flex rounded-lg p-1 gap-1"
-            style={{ backgroundColor: '#08080A', border: '1px solid #1C1C22' }}
+            style={{ backgroundColor: 'var(--bg)', border: '1px solid #1C1C22' }}
           >
             {(['commercial', 'residential'] as const).map((t) => (
               <button
@@ -143,8 +143,8 @@ export function UnifiSection() {
                 onClick={() => setTab(t)}
                 className="px-5 py-2.5 rounded text-sm font-bold capitalize transition-all duration-200"
                 style={{
-                  backgroundColor: tab === t ? '#DC2626' : 'transparent',
-                  color: tab === t ? '#ffffff' : '#71717A',
+                  backgroundColor: tab === t ? '#0EA5E9' : 'transparent',
+                  color: tab === t ? '#ffffff' : 'var(--text-3)',
                 }}
               >
                 {t === 'commercial' ? '🏢 Commercial' : '🏠 Residential'}
@@ -170,24 +170,24 @@ export function UnifiSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.05, ease: 'easeOut' }}
                 className="p-6 rounded-lg transition-all duration-300 group"
-                style={{ backgroundColor: '#08080A', border: '1px solid #1C1C22' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(220,38,38,0.3)' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1C1C22' }}
+                style={{ backgroundColor: 'var(--bg)', border: '1px solid #1C1C22' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(14,165,233,0.3)' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)' }}
               >
                 <motion.div
                   className="w-10 h-10 flex items-center justify-center rounded mb-4"
-                  style={{ color: '#DC2626', backgroundColor: 'rgba(220,38,38,0.08)' }}
+                  style={{ color: '#0EA5E9', backgroundColor: 'rgba(14,165,233,0.08)' }}
                   whileHover={{
                     scale: 1.15,
-                    backgroundColor: 'rgba(220,38,38,0.18)',
-                    filter: 'drop-shadow(0 0 6px rgba(220,38,38,0.4))',
+                    backgroundColor: 'rgba(14,165,233,0.18)',
+                    filter: 'drop-shadow(0 0 6px rgba(14,165,233,0.4))',
                   }}
                   transition={{ type: 'spring', stiffness: 400, damping: 15 }}
                 >
                   {item.icon}
                 </motion.div>
                 <h4 className="text-sm font-bold text-white mb-2 leading-snug">{item.title}</h4>
-                <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>{item.desc}</p>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-3)' }}>{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -197,13 +197,13 @@ export function UnifiSection() {
         <FadeUp>
           <div
             className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 p-7 rounded-lg"
-            style={{ backgroundColor: '#08080A', border: '1px solid #1C1C22' }}
+            style={{ backgroundColor: 'var(--bg)', border: '1px solid #1C1C22' }}
           >
             <div>
               <p className="text-base font-bold text-white mb-1">
                 Ready for a network that just works?
               </p>
-              <p className="text-sm" style={{ color: '#71717A' }}>
+              <p className="text-sm" style={{ color: 'var(--text-3)' }}>
                 Free site survey · Professional installation · Lifetime support available
               </p>
             </div>
@@ -211,14 +211,14 @@ export function UnifiSection() {
               <Link
                 href="/unifi"
                 className="px-5 py-2.5 text-sm font-bold rounded transition-all duration-200"
-                style={{ border: '1px solid #DC2626', color: '#DC2626' }}
+                style={{ border: '1px solid #0EA5E9', color: '#0EA5E9' }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = '#DC2626'
+                  (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9'
                   ;(e.currentTarget as HTMLElement).style.color = '#ffffff'
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'
-                  ;(e.currentTarget as HTMLElement).style.color = '#DC2626'
+                  ;(e.currentTarget as HTMLElement).style.color = '#0EA5E9'
                 }}
               >
                 Learn More →
@@ -226,9 +226,9 @@ export function UnifiSection() {
               <Link
                 href="/contact"
                 className="px-5 py-2.5 text-sm font-bold text-white rounded transition-all duration-200"
-                style={{ backgroundColor: '#DC2626' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#B91C1C' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#DC2626' }}
+                style={{ backgroundColor: '#0EA5E9' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0284C7' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9' }}
               >
                 Get a Quote
               </Link>

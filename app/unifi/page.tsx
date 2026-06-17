@@ -180,14 +180,14 @@ export default function UnifiPage() {
         {/* Hero */}
         <section
           className="relative overflow-hidden hero-scan"
-          style={{ backgroundColor: '#08080A', paddingTop: '140px', paddingBottom: '100px' }}
+          style={{ backgroundColor: 'var(--bg)', paddingTop: '140px', paddingBottom: '100px' }}
         >
           <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
           <div
             className="absolute top-0 left-1/3 pointer-events-none"
             style={{
               width: '600px', height: '500px',
-              background: 'radial-gradient(ellipse, rgba(220,38,38,0.12) 0%, transparent 65%)',
+              background: 'radial-gradient(ellipse, rgba(14,165,233,0.12) 0%, transparent 65%)',
               filter: 'blur(30px)',
             }}
           />
@@ -197,9 +197,9 @@ export default function UnifiPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded text-xs font-bold uppercase tracking-widest mb-8"
-              style={{ border: '1px solid #26262E', color: '#A1A1AA', backgroundColor: '#0D0D10' }}
+              style={{ border: '1px solid #26262E', color: 'var(--text-2)', backgroundColor: 'var(--bg-2)' }}
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               Professional Ubiquiti UniFi Installers · Sacramento, CA
             </motion.div>
 
@@ -219,7 +219,7 @@ export default function UnifiPage() {
                 animate={{ y: '0%' }}
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="text-5xl md:text-7xl font-black leading-none"
-                style={{ color: '#DC2626' }}
+                style={{ color: '#0EA5E9' }}
               >
                 Business Deserves.
               </motion.h1>
@@ -230,7 +230,7 @@ export default function UnifiPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg max-w-2xl leading-relaxed mb-10"
-              style={{ color: '#A1A1AA' }}
+              style={{ color: 'var(--text-2)' }}
             >
               We design and install Ubiquiti UniFi networks for commercial and residential clients across Northern California. Fast, secure, scalable — and managed from a single app with no monthly fees.
             </motion.p>
@@ -243,17 +243,17 @@ export default function UnifiPage() {
             >
               <Link href="/contact"
                 className="px-7 py-3.5 text-sm font-bold text-white rounded transition-all duration-200"
-                style={{ backgroundColor: '#DC2626' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#B91C1C' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#DC2626' }}
+                style={{ backgroundColor: '#0EA5E9' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0284C7' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9' }}
               >
                 Request a Free Site Survey
               </Link>
               <a href="tel:+19165995514"
                 className="px-7 py-3.5 text-sm font-bold text-white rounded transition-all duration-200"
                 style={{ border: '1px solid #26262E' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#DC2626'; (e.currentTarget as HTMLElement).style.color = '#DC2626' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#26262E'; (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#0EA5E9'; (e.currentTarget as HTMLElement).style.color = '#0EA5E9' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-2)'; (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
               >
                 Call (916) 599-5514
               </a>
@@ -262,11 +262,11 @@ export default function UnifiPage() {
         </section>
 
         {/* Tab Section */}
-        <section className="section" style={{ backgroundColor: '#0D0D10', borderTop: '1px solid #1C1C22' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg-2)', borderTop: '1px solid #1C1C22' }}>
           <div className="max-w-7xl mx-auto px-6">
 
             <FadeUp className="mb-10">
-              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#DC2626' }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#0EA5E9' }}>
                 Commercial & Residential
               </p>
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
@@ -275,12 +275,12 @@ export default function UnifiPage() {
                 </h2>
                 <div
                   className="inline-flex rounded-lg p-1 gap-1"
-                  style={{ backgroundColor: '#08080A', border: '1px solid #1C1C22' }}
+                  style={{ backgroundColor: 'var(--bg)', border: '1px solid #1C1C22' }}
                 >
                   {(['commercial', 'residential'] as const).map((t) => (
                     <button key={t} onClick={() => setTab(t)}
                       className="px-5 py-2.5 rounded text-sm font-bold capitalize transition-all duration-200"
-                      style={{ backgroundColor: tab === t ? '#DC2626' : 'transparent', color: tab === t ? '#fff' : '#71717A' }}
+                      style={{ backgroundColor: tab === t ? '#0EA5E9' : 'transparent', color: tab === t ? '#fff' : 'var(--text-3)' }}
                     >
                       {t === 'commercial' ? '🏢 Commercial' : '🏠 Residential'}
                     </button>
@@ -304,22 +304,22 @@ export default function UnifiPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.45, delay: i * 0.06 }}
                     className="mb-4 rounded-lg overflow-hidden"
-                    style={{ backgroundColor: '#08080A', border: '1px solid #1C1C22' }}
+                    style={{ backgroundColor: 'var(--bg)', border: '1px solid #1C1C22' }}
                   >
                     <div className="p-7">
                       <div className="flex flex-col md:flex-row md:items-start gap-6">
                         <div className="md:w-64 flex-shrink-0">
-                          <span className="text-xs font-bold uppercase tracking-widest block mb-2" style={{ color: '#DC2626', fontFamily: 'monospace' }}>
+                          <span className="text-xs font-bold uppercase tracking-widest block mb-2" style={{ color: '#0EA5E9', fontFamily: 'monospace' }}>
                             {String(i + 1).padStart(2, '0')}
                           </span>
                           <h3 className="text-lg font-bold text-white mb-2">{sys.title}</h3>
-                          <p className="text-sm" style={{ color: '#71717A' }}>{sys.summary}</p>
+                          <p className="text-sm" style={{ color: 'var(--text-3)' }}>{sys.summary}</p>
                         </div>
                         <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
                           {sys.details.map((d) => (
                             <div key={d} className="flex items-start gap-2">
-                              <span className="flex-shrink-0 mt-1" style={{ color: '#DC2626' }}>→</span>
-                              <span className="text-sm leading-relaxed" style={{ color: '#A1A1AA' }}>{d}</span>
+                              <span className="flex-shrink-0 mt-1" style={{ color: '#0EA5E9' }}>→</span>
+                              <span className="text-sm leading-relaxed" style={{ color: 'var(--text-2)' }}>{d}</span>
                             </div>
                           ))}
                         </div>
@@ -333,10 +333,10 @@ export default function UnifiPage() {
         </section>
 
         {/* Why ForceX for UniFi */}
-        <section className="section" style={{ backgroundColor: '#08080A', borderTop: '1px solid #1C1C22' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid #1C1C22' }}>
           <div className="max-w-7xl mx-auto px-6">
             <FadeUp className="mb-12 text-center">
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>Why ForceX Tech</p>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>Why ForceX Tech</p>
               <h2 className="text-4xl font-black text-white">What We Do Differently</h2>
             </FadeUp>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -353,11 +353,11 @@ export default function UnifiPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                   className="p-7 rounded-lg"
-                  style={{ backgroundColor: '#0D0D10', border: '1px solid #1C1C22' }}
+                  style={{ backgroundColor: 'var(--bg-2)', border: '1px solid #1C1C22' }}
                 >
-                  <div className="w-1.5 h-1.5 rounded-full mb-4" style={{ backgroundColor: '#DC2626' }} />
+                  <div className="w-1.5 h-1.5 rounded-full mb-4" style={{ backgroundColor: '#0EA5E9' }} />
                   <h4 className="text-base font-bold text-white mb-2">{item.title}</h4>
-                  <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>{item.desc}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-3)' }}>{item.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -365,10 +365,10 @@ export default function UnifiPage() {
         </section>
 
         {/* FAQ */}
-        <section className="section" style={{ backgroundColor: '#0D0D10', borderTop: '1px solid #1C1C22' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg-2)', borderTop: '1px solid #1C1C22' }}>
           <div className="max-w-3xl mx-auto px-6">
             <FadeUp className="mb-10 text-center">
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>FAQ</p>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>FAQ</p>
               <h2 className="text-4xl font-black text-white">Common Questions</h2>
             </FadeUp>
             <div className="flex flex-col gap-2">
@@ -380,14 +380,14 @@ export default function UnifiPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.05 }}
                   className="rounded-lg overflow-hidden"
-                  style={{ backgroundColor: '#08080A', border: '1px solid #1C1C22' }}
+                  style={{ backgroundColor: 'var(--bg)', border: '1px solid #1C1C22' }}
                 >
                   <button
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     className="w-full flex items-center justify-between gap-4 p-6 text-left"
                   >
                     <span className="text-sm font-bold text-white">{faq.q}</span>
-                    <span style={{ color: '#DC2626', flexShrink: 0, fontSize: '20px', lineHeight: 1 }}>
+                    <span style={{ color: '#0EA5E9', flexShrink: 0, fontSize: '20px', lineHeight: 1 }}>
                       {openFaq === i ? '−' : '+'}
                     </span>
                   </button>
@@ -400,8 +400,8 @@ export default function UnifiPage() {
                         transition={{ duration: 0.3, ease: 'easeOut' }}
                       >
                         <div className="px-6 pb-6">
-                          <div style={{ height: '1px', backgroundColor: '#1C1C22', marginBottom: '16px' }} />
-                          <p className="text-sm leading-relaxed" style={{ color: '#A1A1AA' }}>{faq.a}</p>
+                          <div style={{ height: '1px', backgroundColor: 'var(--bg-4)', marginBottom: '16px' }} />
+                          <p className="text-sm leading-relaxed" style={{ color: 'var(--text-2)' }}>{faq.a}</p>
                         </div>
                       </motion.div>
                     )}
@@ -413,31 +413,31 @@ export default function UnifiPage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-28 overflow-hidden" style={{ backgroundColor: '#08080A', borderTop: '1px solid #1C1C22' }}>
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(220,38,38,0.08) 0%, transparent 70%)' }} />
+        <section className="relative py-28 overflow-hidden" style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid #1C1C22' }}>
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(14,165,233,0.08) 0%, transparent 70%)' }} />
           <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
           <div className="relative max-w-3xl mx-auto px-6 text-center">
             <FadeUp>
               <h2 className="text-4xl md:text-5xl font-black text-white mb-5 leading-tight">
                 Let's Design Your Network.
               </h2>
-              <p className="text-base mb-8 max-w-xl mx-auto" style={{ color: '#A1A1AA' }}>
+              <p className="text-base mb-8 max-w-xl mx-auto" style={{ color: 'var(--text-2)' }}>
                 Free site survey, honest pricing, and a network plan before we touch a single cable.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link href="/contact"
                   className="px-8 py-4 text-sm font-bold text-white rounded transition-all duration-200"
-                  style={{ backgroundColor: '#DC2626', minWidth: '220px', textAlign: 'center' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#B91C1C' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#DC2626' }}
+                  style={{ backgroundColor: '#0EA5E9', minWidth: '220px', textAlign: 'center' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0284C7' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9' }}
                 >
                   Request a Free Survey
                 </Link>
                 <a href="tel:+19165995514"
                   className="px-8 py-4 text-sm font-bold text-white rounded transition-all duration-200"
                   style={{ border: '1px solid #26262E', minWidth: '220px', textAlign: 'center' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#DC2626'; (e.currentTarget as HTMLElement).style.color = '#DC2626' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#26262E'; (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#0EA5E9'; (e.currentTarget as HTMLElement).style.color = '#0EA5E9' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-2)'; (e.currentTarget as HTMLElement).style.color = '#ffffff' }}
                 >
                   Call (916) 599-5514
                 </a>

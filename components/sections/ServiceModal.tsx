@@ -64,7 +64,7 @@ export function ServiceModal({ service, onClose }: Props) {
             className="fixed top-0 right-0 bottom-0 z-[99991] overflow-y-auto"
             style={{
               width: 'min(860px, 100vw)',
-              backgroundColor: '#08080A',
+              backgroundColor: 'var(--bg)',
               borderLeft: '1px solid #1C1C22',
             }}
           >
@@ -77,7 +77,7 @@ export function ServiceModal({ service, onClose }: Props) {
                 position: 'sticky',
                 top: 0,
                 height: '2px',
-                background: 'linear-gradient(to right, #DC2626, transparent)',
+                background: 'linear-gradient(to right, #0EA5E9, transparent)',
                 transformOrigin: 'left',
                 zIndex: 10,
               }}
@@ -90,14 +90,14 @@ export function ServiceModal({ service, onClose }: Props) {
               transition={{ delay: 0.4, duration: 0.4 }}
               onClick={onClose}
               className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full transition-all duration-200 z-10"
-              style={{ border: '1px solid #26262E', color: '#A1A1AA', backgroundColor: '#0D0D10' }}
+              style={{ border: '1px solid #26262E', color: 'var(--text-2)', backgroundColor: 'var(--bg-2)' }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = '#DC2626'
-                ;(e.currentTarget as HTMLElement).style.color = '#DC2626'
+                (e.currentTarget as HTMLElement).style.borderColor = '#0EA5E9'
+                ;(e.currentTarget as HTMLElement).style.color = '#0EA5E9'
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = '#26262E'
-                ;(e.currentTarget as HTMLElement).style.color = '#A1A1AA'
+                (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-2)'
+                ;(e.currentTarget as HTMLElement).style.color = 'var(--text-2)'
               }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -116,11 +116,11 @@ export function ServiceModal({ service, onClose }: Props) {
               >
                 <div
                   className="w-14 h-14 flex items-center justify-center rounded-lg flex-shrink-0"
-                  style={{ backgroundColor: 'rgba(220,38,38,0.1)', color: '#DC2626' }}
+                  style={{ backgroundColor: 'rgba(14,165,233,0.1)', color: '#0EA5E9' }}
                 >
                   {service.icon}
                 </div>
-                <span className="text-xs font-bold uppercase tracking-[0.25em]" style={{ color: '#DC2626' }}>
+                <span className="text-xs font-bold uppercase tracking-[0.25em]" style={{ color: '#0EA5E9' }}>
                   ForceX Tech · Service
                 </span>
               </motion.div>
@@ -144,7 +144,7 @@ export function ServiceModal({ service, onClose }: Props) {
                   animate={{ y: '0%' }}
                   transition={{ delay: 0.35, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                   className="text-xl md:text-2xl font-light"
-                  style={{ color: '#DC2626' }}
+                  style={{ color: '#0EA5E9' }}
                 >
                   {service.tagline}
                 </motion.p>
@@ -156,7 +156,7 @@ export function ServiceModal({ service, onClose }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
                 className="text-base leading-relaxed mb-14"
-                style={{ color: '#A1A1AA', maxWidth: '640px' }}
+                style={{ color: 'var(--text-2)', maxWidth: '640px' }}
               >
                 {service.description}
               </motion.p>
@@ -166,7 +166,7 @@ export function ServiceModal({ service, onClose }: Props) {
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ delay: 0.45, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                style={{ height: '1px', backgroundColor: '#1C1C22', transformOrigin: 'left', marginBottom: '3.5rem' }}
+                style={{ height: '1px', backgroundColor: 'var(--bg-4)', transformOrigin: 'left', marginBottom: '3.5rem' }}
               />
 
               {/* What We Deliver */}
@@ -176,7 +176,7 @@ export function ServiceModal({ service, onClose }: Props) {
                 transition={{ delay: 0.5, duration: 0.6 }}
                 className="mb-14"
               >
-                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-8" style={{ color: '#DC2626' }}>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-8" style={{ color: '#0EA5E9' }}>
                   What We Deliver
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -187,13 +187,13 @@ export function ServiceModal({ service, onClose }: Props) {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.55 + i * 0.07, duration: 0.5 }}
                       className="p-5 rounded-lg"
-                      style={{ backgroundColor: '#0D0D10', border: '1px solid #1C1C22' }}
+                      style={{ backgroundColor: 'var(--bg-2)', border: '1px solid #1C1C22' }}
                     >
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: '#DC2626' }} />
+                        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: '#0EA5E9' }} />
                         <h4 className="text-sm font-bold text-white">{item.title}</h4>
                       </div>
-                      <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>{item.description}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: 'var(--text-3)' }}>{item.description}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -206,7 +206,7 @@ export function ServiceModal({ service, onClose }: Props) {
                 transition={{ delay: 0.6, duration: 0.6 }}
                 className="mb-14"
               >
-                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-8" style={{ color: '#DC2626' }}>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-8" style={{ color: '#0EA5E9' }}>
                   Our Process
                 </p>
                 <div className="flex flex-col gap-0">
@@ -222,19 +222,19 @@ export function ServiceModal({ service, onClose }: Props) {
                       {i < service.process.length - 1 && (
                         <div
                           className="absolute left-[18px] top-8 bottom-0 w-px"
-                          style={{ backgroundColor: '#1C1C22' }}
+                          style={{ backgroundColor: 'var(--bg-4)' }}
                         />
                       )}
                       {/* Step number */}
                       <div
                         className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-black"
-                        style={{ border: '1px solid #DC2626', color: '#DC2626', backgroundColor: 'rgba(220,38,38,0.05)' }}
+                        style={{ border: '1px solid #0EA5E9', color: '#0EA5E9', backgroundColor: 'rgba(14,165,233,0.05)' }}
                       >
                         {step.step}
                       </div>
                       <div className="pt-1">
                         <h4 className="text-base font-bold text-white mb-1">{step.title}</h4>
-                        <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>{step.description}</p>
+                        <p className="text-sm leading-relaxed" style={{ color: 'var(--text-3)' }}>{step.description}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -248,7 +248,7 @@ export function ServiceModal({ service, onClose }: Props) {
                 transition={{ delay: 0.7, duration: 0.6 }}
                 className="mb-14"
               >
-                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-6" style={{ color: '#DC2626' }}>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-6" style={{ color: '#0EA5E9' }}>
                   Why It Matters
                 </p>
                 <div className="flex flex-wrap gap-3">
@@ -259,7 +259,7 @@ export function ServiceModal({ service, onClose }: Props) {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.72 + i * 0.05, duration: 0.4 }}
                       className="px-4 py-2 text-sm font-medium rounded-full"
-                      style={{ border: '1px solid #26262E', color: '#A1A1AA', backgroundColor: '#0D0D10' }}
+                      style={{ border: '1px solid #26262E', color: 'var(--text-2)', backgroundColor: 'var(--bg-2)' }}
                     >
                       {b}
                     </motion.span>
@@ -274,10 +274,10 @@ export function ServiceModal({ service, onClose }: Props) {
                 transition={{ delay: 0.75, duration: 0.6 }}
                 className="mb-14"
               >
-                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-4" style={{ color: '#52525B' }}>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] mb-4" style={{ color: 'var(--text-4)' }}>
                   Common Industries
                 </p>
-                <p className="text-sm" style={{ color: '#52525B' }}>
+                <p className="text-sm" style={{ color: 'var(--text-4)' }}>
                   {service.industries.join(' · ')}
                 </p>
               </motion.div>
@@ -292,9 +292,9 @@ export function ServiceModal({ service, onClose }: Props) {
                 <a
                   href="/contact"
                   className="px-8 py-4 text-base font-bold text-white rounded text-center transition-all duration-200"
-                  style={{ backgroundColor: '#DC2626' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#B91C1C' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#DC2626' }}
+                  style={{ backgroundColor: '#0EA5E9' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0284C7' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = '#0EA5E9' }}
                 >
                   Get a Free Quote →
                 </a>
@@ -303,11 +303,11 @@ export function ServiceModal({ service, onClose }: Props) {
                   className="px-8 py-4 text-base font-bold text-white rounded text-center transition-all duration-200"
                   style={{ border: '1px solid #26262E' }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = '#DC2626'
-                    ;(e.currentTarget as HTMLElement).style.color = '#DC2626'
+                    (e.currentTarget as HTMLElement).style.borderColor = '#0EA5E9'
+                    ;(e.currentTarget as HTMLElement).style.color = '#0EA5E9'
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = '#26262E'
+                    (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-2)'
                     ;(e.currentTarget as HTMLElement).style.color = '#ffffff'
                   }}
                 >

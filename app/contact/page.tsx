@@ -38,16 +38,16 @@ export default function ContactPage() {
       <main className="pt-16">
 
         {/* Page Hero */}
-        <section className="relative py-20 overflow-hidden grid-bg" style={{ backgroundColor: '#08080A' }}>
+        <section className="relative py-20 overflow-hidden grid-bg" style={{ backgroundColor: 'var(--bg)' }}>
           <div
             className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
-            style={{ width: '500px', height: '250px', background: 'radial-gradient(ellipse, rgba(220,38,38,0.15) 0%, transparent 70%)' }}
+            style={{ width: '500px', height: '250px', background: 'radial-gradient(ellipse, rgba(14,165,233,0.15) 0%, transparent 70%)' }}
           />
           <div className="relative max-w-7xl mx-auto px-6">
             <FadeUp>
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>Get in Touch</p>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>Get in Touch</p>
               <h1 className="text-5xl md:text-6xl font-black text-white mb-4">Contact ForceX Tech</h1>
-              <p className="text-lg" style={{ color: '#A1A1AA' }}>
+              <p className="text-lg" style={{ color: 'var(--text-2)' }}>
                 Questions, quotes, or just need fast help — we&apos;re here.
               </p>
             </FadeUp>
@@ -57,18 +57,18 @@ export default function ContactPage() {
         <ContactForm />
 
         {/* FAQ */}
-        <section className="section" style={{ backgroundColor: '#08080A', borderTop: '1px solid #1C1C22' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid #1C1C22' }}>
           <div className="max-w-3xl mx-auto px-6">
             <FadeUp className="mb-12 text-center">
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>Common Questions</p>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>Common Questions</p>
               <h2 className="text-3xl font-black text-white">FAQ</h2>
             </FadeUp>
             <div className="flex flex-col gap-px" style={{ border: '1px solid #1C1C22' }}>
               {faqs.map((faq, i) => (
                 <FadeUp key={i} delay={i * 0.08}>
-                  <div className="p-6" style={{ backgroundColor: '#0D0D10', borderBottom: '1px solid #1C1C22' }}>
+                  <div className="p-6" style={{ backgroundColor: 'var(--bg-2)', borderBottom: '1px solid #1C1C22' }}>
                     <h3 className="text-base font-bold text-white mb-3">{faq.q}</h3>
-                    <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>{faq.a}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: 'var(--text-3)' }}>{faq.a}</p>
                   </div>
                 </FadeUp>
               ))}

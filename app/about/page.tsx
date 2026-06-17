@@ -28,16 +28,16 @@ export default function AboutPage() {
       <main className="pt-16">
 
         {/* Hero */}
-        <section className="relative py-28 overflow-hidden grid-bg" style={{ backgroundColor: '#08080A' }}>
+        <section className="relative py-28 overflow-hidden grid-bg" style={{ backgroundColor: 'var(--bg)' }}>
           <div
             className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
-            style={{ width: '600px', height: '300px', background: 'radial-gradient(ellipse, rgba(220,38,38,0.15) 0%, transparent 70%)' }}
+            style={{ width: '600px', height: '300px', background: 'radial-gradient(ellipse, rgba(14,165,233,0.15) 0%, transparent 70%)' }}
           />
           <div className="relative max-w-7xl mx-auto px-6">
             <FadeUp>
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>About ForceX</p>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>About ForceX</p>
               <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Built in California.<br />Built for Business.</h1>
-              <p className="text-xl max-w-2xl" style={{ color: '#A1A1AA' }}>
+              <p className="text-xl max-w-2xl" style={{ color: 'var(--text-2)' }}>
                 ForceX Tech LLC is a Sacramento-based technology company delivering complete IT infrastructure, networking, security, and smart systems to businesses and homeowners across Northern California.
               </p>
             </FadeUp>
@@ -45,13 +45,13 @@ export default function AboutPage() {
         </section>
 
         {/* Story */}
-        <section className="section" style={{ backgroundColor: '#0D0D10' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg-2)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <FadeUp>
-                <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>Our Story</p>
+                <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>Our Story</p>
                 <h2 className="text-4xl font-black text-white mb-6">One Team. Every Tech Layer.</h2>
-                <div className="flex flex-col gap-4" style={{ color: '#A1A1AA' }}>
+                <div className="flex flex-col gap-4" style={{ color: 'var(--text-2)' }}>
                   <p className="text-base leading-relaxed">
                     ForceX Tech was built around a simple idea: businesses deserve a single, accountable technology partner — not a different vendor for every problem.
                   </p>
@@ -65,16 +65,16 @@ export default function AboutPage() {
               </FadeUp>
 
               <FadeUp delay={0.15}>
-                <div className="grid grid-cols-2 gap-px" style={{ backgroundColor: '#1C1C22' }}>
+                <div className="grid grid-cols-2 gap-px" style={{ backgroundColor: 'var(--bg-4)' }}>
                   {[
                     { value: '500+', label: 'Projects' },
                     { value: '200+', label: 'Clients' },
                     { value: '10+', label: 'Years' },
                     { value: '<2hr', label: 'Response' },
                   ].map((s) => (
-                    <div key={s.label} className="flex flex-col items-center justify-center py-10" style={{ backgroundColor: '#0D0D10' }}>
-                      <span className="text-4xl font-black mb-1" style={{ color: '#DC2626', fontFamily: 'monospace' }}>{s.value}</span>
-                      <span className="text-sm" style={{ color: '#71717A' }}>{s.label}</span>
+                    <div key={s.label} className="flex flex-col items-center justify-center py-10" style={{ backgroundColor: 'var(--bg-2)' }}>
+                      <span className="text-4xl font-black mb-1" style={{ color: '#0EA5E9', fontFamily: 'monospace' }}>{s.value}</span>
+                      <span className="text-sm" style={{ color: 'var(--text-3)' }}>{s.label}</span>
                     </div>
                   ))}
                 </div>
@@ -84,19 +84,19 @@ export default function AboutPage() {
         </section>
 
         {/* Values */}
-        <section className="section" style={{ backgroundColor: '#08080A' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg)' }}>
           <div className="max-w-7xl mx-auto px-6">
             <FadeUp className="mb-16 text-center">
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>What We Stand For</p>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>What We Stand For</p>
               <h2 className="text-4xl font-black text-white">Our Values</h2>
             </FadeUp>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-px" style={{ backgroundColor: '#1C1C22' }}>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-px" style={{ backgroundColor: 'var(--bg-4)' }}>
               {values.map((v, i) => (
                 <FadeUp key={v.title} delay={i * 0.1}>
-                  <div className="p-8 h-full" style={{ backgroundColor: '#0D0D10' }}>
-                    <div className="w-8 h-0.5 mb-6" style={{ backgroundColor: '#DC2626' }} />
+                  <div className="p-8 h-full" style={{ backgroundColor: 'var(--bg-2)' }}>
+                    <div className="w-8 h-0.5 mb-6" style={{ backgroundColor: '#0EA5E9' }} />
                     <h3 className="text-xl font-bold text-white mb-3">{v.title}</h3>
-                    <p className="text-sm leading-relaxed" style={{ color: '#71717A' }}>{v.description}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: 'var(--text-3)' }}>{v.description}</p>
                   </div>
                 </FadeUp>
               ))}
@@ -105,12 +105,12 @@ export default function AboutPage() {
         </section>
 
         {/* Service Areas */}
-        <section className="section" style={{ backgroundColor: '#0D0D10', borderTop: '1px solid #1C1C22' }}>
+        <section className="section" style={{ backgroundColor: 'var(--bg-2)', borderTop: '1px solid #1C1C22' }}>
           <div className="max-w-7xl mx-auto px-6">
             <FadeUp className="mb-10">
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#DC2626' }}>Where We Work</p>
+              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0EA5E9' }}>Where We Work</p>
               <h2 className="text-4xl font-black text-white mb-2">Service Areas</h2>
-              <p style={{ color: '#A1A1AA' }}>Serving Sacramento and surrounding Northern California communities.</p>
+              <p style={{ color: 'var(--text-2)' }}>Serving Sacramento and surrounding Northern California communities.</p>
             </FadeUp>
             <FadeUp delay={0.1}>
               <div className="flex flex-wrap gap-3">
@@ -118,7 +118,7 @@ export default function AboutPage() {
                   <span
                     key={area}
                     className="px-4 py-2 text-sm rounded"
-                    style={{ border: '1px solid #1C1C22', color: '#A1A1AA', backgroundColor: '#0D0D10' }}
+                    style={{ border: '1px solid #1C1C22', color: 'var(--text-2)', backgroundColor: 'var(--bg-2)' }}
                   >
                     {area}
                   </span>

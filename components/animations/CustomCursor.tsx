@@ -62,7 +62,7 @@ export function CustomCursor() {
           translateX: '-50%', translateY: '-50%',
           width: clicking ? '6px' : '8px',
           height: clicking ? '6px' : '8px',
-          backgroundColor: '#DC2626',
+          backgroundColor: '#0EA5E9',
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 99999,
@@ -80,13 +80,13 @@ export function CustomCursor() {
           translateX: '-50%', translateY: '-50%',
           width: hovering ? '48px' : clicking ? '24px' : '36px',
           height: hovering ? '48px' : clicking ? '24px' : '36px',
-          border: hovering ? '1px solid rgba(220,38,38,0.9)' : '1px solid rgba(220,38,38,0.45)',
+          border: hovering ? '1px solid rgba(14,165,233,0.9)' : '1px solid rgba(14,165,233,0.45)',
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 99998,
           opacity: visible ? 1 : 0,
           transition: 'width 0.25s ease, height 0.25s ease, border-color 0.2s ease',
-          boxShadow: hovering ? '0 0 12px rgba(220,38,38,0.3)' : 'none',
+          boxShadow: hovering ? '0 0 12px rgba(14,165,233,0.3)' : 'none',
         }}
       />
     </>
